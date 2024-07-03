@@ -1,0 +1,59 @@
+Augtour: Explore The India Through AR:
+what is: It is an Augmented Reality based application that aims to provide information and 3 visuals of India's rich heritage and culture or monuments.
+Basically this app has 2 views basic view and advanced view.
+With basic view user can scan the monument and get information about it in the form of text and audio.
+With advanced view user can move around the monuments with the controller like a player move in the game and get an immersive augmented reality experience.
+
+1)Technology Used: Unity, Blender, C#, Firebase.
+Unity: Unity is primarily a game engine use for creating 2d and 3d games or AR/VR application.
+	It supports various toolkit and SDK's like Vuforia, ARToolkit, ARCore etc for various SDk's for VR (pre built or built it)
+2)Blender: Blender is an open source platform to create or manipulate 3d models and 2d animations.
+It supports a lot of 3d formats like obj, fbx, .blend.
+We can also apply colors to models by using materials and textures setting.
+3)Firebase: Firebase is platform developed by google for building and managing mobile and web applications.
+Offers variety of tools such as real time database, authentication, cloud storage, analytics and more.
+It's scalable, reliable, and has a lot of service in single place.
+4)C#: C# is a modern, general-purpose programming language that can be used to perform a wide range of tasks and objectives that span over a variety of professions. 
+a) Authentication Script
+To access ui elements from unity import : using UnityEngine.UI;
+for using firebase import : using Firebase and using Firebase.Auth;
+**to get the value of input field use 
+string email=emailInputField.text;
+string password=passwordInputField.text;
+to signup with email and password use:
+auth.SignInWithEmailAndPasswordAsyn (inside it use things like if success store the result in variable  else do so etc
+then Firebaseuser=task.result;
+public InputField emailInputField;
+public InputField passwordInputField; // by doing this the field get showed in the unity to attach the GameObjects.
+
+** to switch scene in unity use :
+using UnityEngine.SceneManagement;
+  public void SwitchScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+then in the unity
+
+b)Player Controller Script:
+Create a player empty gameobject attach  characterController or playerController script to it, make main camera child of player gameobject
+define fields in code like speed, mousesenstivity, rotaionX, rotationY, rotationZ
+transform.rotate(0,rotationX,0)
+and same for rotationY and rotationZ
+
+______________________________________________________________________________________________________________________________________
+1) My Role in the Project: Creating animation, integration and making unity application.
+2) Challenges Faced During project: One of the main challenge in integration and managing proper lighting and positioning of model and to reduce the size of model
+3) What is AR: Augmented Reality overlays the digital content onto the real world, enhancing what you see around.
+eg: Pokemon go
+4) VR: Virtual Reality places us in a completely virtual world, make use of VR headset(Oculus, Jio) etc.
+eg: VR games etc.
+
+
+______________________________________________________________________________________________________________________________________
+Testing of application:
+1)Unit: test individual components and functions of you c# script 
+2)Integration Testing:Fireabse integration, AR integration
+Non functional testing:AR performance
+                       load time
+                       security testing
+                       device and environmetn testing

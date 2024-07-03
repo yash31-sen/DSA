@@ -1,0 +1,112 @@
+Database Structure
+users: Stores information about all users (admin, staff, and students).
+staff: Stores additional information specific to staff members.
+students: Stores additional information specific to students.
+departments: Stores information about departments.
+courses: Stores information about courses.
+classes: Stores information about classes.
+attendance: Stores attendance records for students.
+timetable: Stores timetable information for staff.
+
+
+1)user table:
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'staff', 'student') NOT NULL,
+    address TEXT,
+    dob DATE
+);
+
+2)Student table:
+CREATE TABLE students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    department_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE SET NULL
+);
+
+3)Staff table:
+CREATE TABLE staff (
+    staff_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    department_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE SET NULL
+);
+
+4)department table:
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR(255) NOT NULL,
+    short_name VARCHAR(50) NOT NULL
+);
+
+
+5)course table:
+CREATE TABLE courses (
+    course_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    semester INT NOT NULL,
+    department_id INT,
+    credits INT NOT NULL,
+    course_type ENUM('Core', 'Elective') NOT NULL,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id) ON DELETE SET NULL
+);
+
+6)classes table:
+CREATE TABLE classes (
+    class_id INT AUTO_INCREMENT PRIMARY KEY,
+    staff_id INT,
+    course_id INT,
+    section VARCHAR(50) NOT NULL,
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id) ON DELETE SET NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE SET NULL
+);
+
+7)attendance table:
+CREATE TABLE attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    class_id INT,
+    attendance_date DATE NOT NULL,
+    status ENUM('Present', 'Absent') NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE
+);
+
+8)timtable table:
+CREATE TABLE timetable (
+    timetable_id INT AUTO_INCREMENT PRIMARY KEY,
+    staff_id INT,
+    class_id INT,
+    day_of_week ENUM('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id) ON DELETE CASCADE,
+    FOREIGN KEY (class_id) REFERENCES classes(class_id) ON DELETE CASCADE
+);
+
+
+
+
+
+
+
+
+How do you find the list of students who have not marked their attendance for a specific date?
+
+select s.studentname, s.studentemail from student 
+where s.studentId not in(
+    select a.student_id from attendance a 
+    where a.class_id=1 and a.attendance_date="2024/07/03"
+);
+How do you retrieve the list of courses along with the staff teaching them?
+
+select c.coursename, s.staffname from coursess C
+join staff s
+where c.staffid=s.staffid;

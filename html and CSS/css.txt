@@ -1,0 +1,186 @@
+Cascading style sheets
+Cascading -> a rule that defines the precidence of type of css that if mulitple css are apllied to perticular html element then which css will act upon it 
+
+[inline > id selector > class selector > element selector > universal selector*]
+inline > internal > external
+
+<link rel="stylesheet" href="cssfile.css>
+
+rel="stylesheet" -> specifies that the file linked to stylesheets
+href="styles.css": -> path of stylesheet file
+href-> Hypertext Reference
+
+
+**import font to css:
+@import url(url_of_font_provided_by_google_fonts);
+
+** import icons to css file: 
+icons provider website: font awesome
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+**units in css:
+1) pixels(px): epresents a single dot on the screen.
+2)pt (points): 1 point is equal to 1/72 of an inch
+3)in (inches): 1 inch is equal to 96 pixels.
+4)cm (centimeters):1 inch is equal to 2.54 cm
+relative units: they are more flexible and responsive, as they scale relative to other elements:
+1)em: Relative to the font-size of the element (2em means 2 times the current font size)current means parent
+2)rem (root em): Relative to the font-size of the root element (usually the <html> element).
+3) % (percent): Relative to the parent element's size.
+4)vw (viewport width): Relative to 1% of the viewport's width.
+5)vh (viewport height): Relative to 1% of the viewport's height.
+6)fr (fraction): Used in CSS Grid to allocate a portion of the available space.
+
+**Margin and Padding in CSS:
+Margin:
+Definition: Margin is the space outside an element's border. It creates space between the element and its neighboring elements.
+values: px, % etc
+Auto (used for centering elements horizontally)
+Inherit (inherits the margin value from its parent element)
+shorthand: margin: 10px 15px 20px 25px; /* top right bottom left */
+
+Paddign:
+Definition: Padding is the space inside an element's border, between the border and the element's content. It creates space within the element, affecting its content box.
+
+values: same as margin
+shorthand: same as margin
+
+
+=> Margin is outside the element's border.
+Padding is inside the element's border.
+
+
+
+
+
+**text properties in css:
+1) font-weight:bold,bolder,lighter,normal
+2)font-family:
+3) font-size,line-height,
+4)text-decoration:underline,overline,line-through
+5)text-transformation: uppercase / lowercase / capitalize / none
+    uppercase-> coverts all chatracters to upper case
+    capitalize-> converts first charcter to uppercase
+
+
+** box model in css:
+defines how elements on a web page are structured and laid out. It consists of four parts: content, padding, border, and margin. These parts determine the dimensions and spacing of elements on the page, allowing for precise layout control in CSS.
+
+-> border:2px solid red;
+-> border-radius:
+
+
+
+**display properties in css:
+display:inline Takes only the space required by the element. paddin cn be applied
+-> can't apply margin from to and bottom, only horizontal margin will work
+-> can't set width and height, determined by its content. 
+display:block   Takes full space available in width.
+display:inline-block   Similar to inline but we can set margin & padding.
+-> can apply margin from to and bottom, only horizontal margin will work
+-> can set width and height
+display:none          To remove element from document flow
+-> completely removd from the document and also don't take any space
+
+
+**visibility: hidden;
+ Note : When visibility is set to none, space for the element is reserved.
+ But for display set to none, no space is reserved or blocked for the
+ element
+📌**position properties in css:
+
+**position:static, relative, absolute,fixed
+1)static-> can't use top , bottom,left,right
+2) relative-> element is relative to itself. (The top, right, bottom, left, and z-index will work)
+3)absolute-> positioned relative to its closest positioned ancestor(non-static one) or may be a browser also. (removed from the flow)
+can use the top, left, right, and bottom
+4) fixed-> positioned relative to browser. (removed from flow)
+position always fied, can use top left right and bottom
+5) sticky-> positioned based on use r's scroll position
+while scrolling when box get visible it set to it's setted position and get sticked 
+
+
+
+** z-index:auto(0)/1/2/-1/-2 etc
+decides the stack level of elements
+overllaping elements with  larger z-index over the elements with smaller z-index
+
+
+**background image in css:
+background-image:url("imgurl);
+background-size:cover/contain/auto/
+background-repeat:repeat,no-repeat;
+cover; /* The image will cover the entire container */ image may cut
+contain; /* The image will be contained within the container */	Resize the background image to make sure the image is fully visible
+auto; /* Keeps the original size of the image */
+no-repeat; /* Optional: Ensures the image doesn't repeat */
+background-position: left top, right bottom;
+
+**flex-box in css:
+ is a one-dimensional layout model in CSS that provides a powerful way to arrange items within a container, 
+ It is designed to distribute space along a single axis (either horizontally or vertically), making it easy to create flexible and responsive layouts.
+-> if we cereated a container as flex then the items inside this container always try to be inside it untill there content(text or other things) allows for it
+* flex model:
+flex-container
+main axis -> horizontal line in the center
+cross axis-> vertical line
+flex-items
+-> flex-direction:row(default), row-reverse, column, column-reverse
+
+-> flex properties:
+1)justify-content(alignment along main axis)-> flex-start, flex-end, center, space-evenly, space-around, space-between
+2)flex-wrap:nowrap, wrap, wrap-reverse
+3)align-items(alignbment-along-cross-axis):center, flex-end, flex-start
+4)align-content(alignment of spaces between and around the content along cross axis)
+        -> works well when the elements are in multiple line not in single line
+        if we do align-content:center and if the elements are distributed here and ther then all of them get combined in the center removing the space between them or the space is transfered to other sides
+5)align-self property of content inside the flex container like if you want to apply  other property to one element then the other element in the flex box then we use it 
+-> it has highest priority 
+->auto, flex-start, flex-end, center etc
+6)flex-grow and flex-shrink-> when we want our to gow size wehn the space is available and reduce there size when the space is less then these properties used
+flex-grow:calc(600/2);/ initial/inherit
+
+if we wnat to increase or decresae the size one perticular container inside flex container then give give flex-wrap/grow property to it individually.
+
+
+
+**media queries:
+
+helps to create responsive design in website:
+syntax:
+@media (width : 600px) {
+       div {
+              background-color : red;
+      }
+   }
+ @media (min-width : 600px) {
+       div {
+              background-color : red;
+      }
+   }
+   @media (min-width : 200px) and (min-width : 300px) {
+ div {
+ background-color : red;
+ }
+ }
+
+
+**css grid:
+
+it is 2d grid based layout system with rows and columns 
+usefull in creating more complex and organized layout
+to use it add display:grid property to the container element 
+-> grid-template-columns: 100px 100px 100px 100px ; /*does not matter how many elements we have it divides in the 4 columns of 100px each and if we add one more 100px then it divides them in the 5 columns of 100px/or any given value can also be individually different
+in place of px and other values we can also give fr (fraction)
+like here for creating 4 columns we have to write it 4 times instead we can alos do it with repeat(4,100px)
+******** grid-template-columns: repeat(auto-fill,minmax(200px,1fr)) ; -> based on the provided size it will make the number of columns more or less /more responsive
+*/
+-> grid-gap: 20px; /* provide gap between columns 
+
+-> if we give grid-template-columns: 100px 100px 100px 100px ; like that then if any one item is having more content then others then the size of all the grid items get incresed to resolve this we can use 
+grid-auto-rows:size;  but the problem is this if the content is more than the size then it will overflow from the item container [to resolve it]:
+grid-auto-rows:minmax(100px,auto);//it will give minimum size of the box to 100pz and if more content then according to content 
+
+-> grid-column-start:2;
+grid-column-end:3;  so the box will move to the 2 and end at 3 as grid is tablular layout we can swithch the position hirizontally with it for vertically use row in place/ for individual box
+with the same we can also inc or dec the size of columns like start at 2 and end at 4 that is it takes the space of 2 boxes

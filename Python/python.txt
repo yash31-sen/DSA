@@ -1,0 +1,364 @@
+Python is high level progrmaming language, dynamically typed, platform independent, case senstitive language
+one major feature of python is automatic memory management which automatically allocate or deallocate the memory
+execution of python code by interpreter:
+                Source Code → Tokens → AST(parse tree) → Bytecode → PVM Execution
+                PVM(Python Virtual Machine is responsible for running code in underlying hardware)
+** python print statment automaticlly add new line after it if don't want use end=""   # empty string
+** variables in python->
+there is no need to define the datatype of variables in python
+strings ,numbers ,boolean, float etc
+
+** input in python:
+input() 
+input("Enter you name")
+it is by default alwys in the form of string so we need type conversion to convert it into a desired form
+int(input("enter your age))
+
+**Strings in python:
+in python strings are immutable 
+string a="yash"
+name.upper()-> YASH
+name.lower() # both of these functions does not affect the original string they just print them in uper or lower format
+name.find('y')  #gives index of character if not found return -1
+    -> name.find('yas') # can also find the substring with it , returns the index of first character of the substring 
+
+name.replace("ya","su") # sush, does not changes the original string 
+
+print('y' in name) # returns true if found else false
+
+** string slicing in python:
+Basic Syntax: The syntax for slicing a string in Python is string[start:end:step].
+
+start: Optional. The index where the slice starts (inclusive). If omitted, it defaults to 0.
+end: Optional. The index where the slice ends (exclusive). If omitted, it defaults to the length of the string.
+step: Optional. The step or increment between characters in the slice. If omitted, it defaults to 1, can't be zero
+
+indices in string slicing:
++ve index move forward in the string while -ve index move backward in the string -1 is first index from last ans -2 is 2nd last index
+syntax: s[start,end,step]
+start index must smaller than the end index else it wil print the empty string or nothing
+
+
+
+
+**operators in python:
++, -, *, /, //, %(modulo or remainder), ** (power operator)
+// # is is also used for dividing numbers, but if the outpur is in decimal format like 5/2 so in place of giving 2.5 it only gives 2, in short it eleminates the decimal digits 
+** # 5**2 prints 25
+
+
+operator precidence in python:
+| Precedence | Operators           | Description                                   | Associativity |
+|------------|---------------------|-----------------------------------------------|---------------|
+| 1          | ()                  | Parentheses                                   | Left to right |
+| 2          | x[index], x[index:index] | Subscription, slicing                     | Left to right |
+| 3          | await x             | Await expression                              | N/A           |
+| 4          | **                  | Exponentiation                                | Right to left |
+| 5          | +x, -x, ~x          | Positive, negative, bitwise NOT               | Right to left |
+| 6          | *, @, /, //, %      | Multiplication, matrix, division, floor division, remainder | Left to right |
+| 7          | +, –                | Addition and subtraction                     | Left to right |
+| 8          | <<, >>              | Shifts                                        | Left to right |
+| 9          | &                   | Bitwise AND                                   | Left to right |
+| 10         | ^                   | Bitwise XOR                                   | Left to right |
+| 11         | |                   | Bitwise OR                                    | Left to right |
+| 12         | in, not in, is, is not, <, <=, >, >=, !=, == | Comparisons, membership tests, identity tests | Left to right |
+| 13         | not x               | Boolean NOT                                   | Right to left |
+| 14         | and                 | Boolean AND                                   | Left to right |
+| 15         | or                  | Boolean OR                                    | Left to right |
+| 16         | if-else             | Conditional expression                        | Right to left |
+| 17         | lambda              | Lambda expression                             | N/A           |
+| 18         | :=                  | Assignment expression (walrus operator)       | Right to left |
+
+
+[()] > [**] > [~x] > [+x], [p] > [*, /, //, % ] >[ +, -] > [&] > [^] > [|] > [<,>,!=,==,is , isnot] > [not] > [and] > [not]
+
+
+
+** Comparison operator:
+>,<,==,!=,
+
+** logical operator :
+or, and, not
+
+** if elif else ,switch
+use : for block of code 
+indentaion is of 4 spaces
+
+
+** range:
+range(5)  # 0,1,2,3,4 || last one is exclussive 
+
+                                    In python2
+**          range()                  vs                          xrange():
+        returns list                                        return generated.object
+        more memopry requried                               less memory requried
+        apply list operations                               can't appy list operations
+        fast                                                slow
+                                    In python3
+        in python3 there is no xrange function but range() function itself behaves like a xrange() function
+        in python3 srange of python2 is renamed as range() in python3
+        although xrange is said to be slow but with negligible impact so does not cost much 
+
+**loops in python:
+
+1) for i in range(1,2):
+2) while i <=5:
+note-> there is no while loop i python
+
+
+
+**list:
+ordered collection of elements, mutable , dynamic(size can grow and shrink), hetrogeneus, iterable, zero based index
+syntax-> a=[1,'2',"yash", {"a":1}, (1,2)]
+list indexing:
+a[1] # 1
+a[-1] #(1,2)
+a[-1][1] #2
+a[0,2]  # 1,'2' || prints only 2 elements from the list last one is exclussive
+
+operatiosn in list:
+1) a.append(1) # adds 1 to the end of list
+2) a.insert(index,value)  # inserts perticular value in the given index
+3) print(99  in marks) # if present then true else false
+4) len(a)
+5) a.clear() # cleans up the list 
+6) a.count(1) # prints how many times one occures in list
+7) a.index(1) # gives first index of 1 
+
+
+**list comprehension:
+    -> it allows us to create a new list by applying an expression to each item in an existing iterable(list,tuple or range) and optionally applying a filter Condition
+    [expression for item in iterable  if Condition]
+    example: odd_list = [i for i in l if i % 2 != 0]  # contains all the odd elemetnts from the parent list
+
+**tuple:
+ordered collection of elements , immutable ,hetrogeneus
+in tuples it is not neccessary to add pranthesis it will withou them as well eg: a= 1,2,3,"yash"
+but to make readable and understandable we use them
+operatiosn:
+a.index(1) # gives first index of 1 
+a.count(1) # prints how many times one occures in list
+len(a)
+print(99  in marks) # if present then true else false
+applications:
+1)database record
+2) immutable key in dictionary
+
+**SET in python:
+
+A set is an unordered collection of unique elements in Python.
+Sets are created using curly braces {} or the set() constructor.
+
+Unique Elements, Unordered, Mutable, hetrogeneus
+So, while sets in Python can store elements of various data types, they can only store hashable types. If you try to create a set with elements that include unhashable types, you'll encounter a TypeError.
+-> does not have indexes, can't do like that: s[1] gives TypeError
+-> can iterate it with for loop like: for i in s: print(i)
+
+
+
+
+** dictionary in python:
+Key-Value Pairs, Mutable, Unordered, Unique Keys, Access by Key, Dynamic Size, JSON-like Structure
+***Flexible Key Types: Keys can be of any immutable type, such as integers, strings, tuples, or even custom objects, as long as they are hashable.
+dic_name.items() # to iterate over dictionary
+
+
+
+** fucntions in python:
+1) In-Build functions
+        int(), str(), bool()
+2) Module functions
+        used by importing the module eg:math(sqrt)
+        to get all the fucntions that perticular module hsa use prntprint(dir(module_name))
+3) user defined fucntions
+        def function_name(parameters):
+            # code 
+4) lambda function:
+        it is an small anonymous fucntion without name 
+        syntax:-> lambda arguments:expression
+        example: cube=lambda x:x*x
+        print(cube(2)) #4
+        It can also take multiple arguments as 
+        avg= lambda x,y:(x+y)/2
+        print(avg[2,4]) # 3
+
+        ** although we assign the value of lambda fucntion to variables like avg, cube etc but we don't need them if we direclty pass the lamba function to print statment it will also work eg: print(lambda x,y:(x+y)/2) #3
+        can also use with complex tasks by using baraces and all but use only for one liners recommended and when you have to pass fucntion as an argument
+** using *args and *kwargs in python:
+*args: with it a function can take variable number of arguments
+eg:
+def add(*args):
+    return  sum(args)
+print(add(1,2,3,4,5)) # 15
+if we print type of *args then it is of tuple type, we can use list, set etc also but it's type is tuple only
+* can also use normal arguments with *args but normal argument must always be before the *args else it will give error
+** we can also use normal arguments, *args and ** kwargs together but yhe sequence is like: normal arguement,*args,**kwargs
+** both * args and ** kwargs are optional if given in function call then executes else does not make any problem
+
+eg:
+def a(*args):
+    print(args[3])
+l=[1,2,3,4,5,6]
+
+a(*l)
+
+**kwargs: it allows fucntion to accept variable number of keywords arguments
+Keyword arguments are arguments passed to a function with a variable name.
+
+it wroks with dictionary
+eg:
+def fun(nomral ,*args,**kwargs):
+    for key,values in kwargs.items():
+        print(f"({key} is {value})")
+a=['b','c']
+k={'b':'programmer', 'c':'someone'}
+
+fun('hello',*a,**k)
+
+
+
+
+
+**Exceptiopn handelling in python:
+Exception handling in Python allows you to gracefully handle errors and unexpected situations that may occur during the execution of your code
+Try-Except Block: try-> contains coed that may generate excetion or error, except-> handelling code is placed here
+-> if error occures in try block it direclty jumps into the except Block
+-> it can have multiple except blocks for differenet differenet exceptions
+-> we xan specify the type of exception we want to catch in except block
+
+Finally block-> we can optionaly include it after the try-except block
+                code in finally blok aways executed whether the excption ocurs or not
+
+examplw:
+# Example: Division by zero exception handling
+
+try:
+    dividend = int(input("Enter the dividend: "))
+    divisor = int(input("Enter the divisor: "))
+    result = dividend / divisor
+    print("Result:", result)
+
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+
+except ValueError:
+    print("Error: Please enter valid integer values.")
+
+except Exception as e:
+    print("An error occurred:", e)
+
+finally:
+    print("Cleanup code executed.")
+
+print("End of program.")
+
+**mokey ptaching in python:
+Monkey patching in Python is a technique for modifying a program's behavior at runtime by dynamically changing code.
+
+With monkey patching, you can alter the functionality of existing code (like modules, classes, or functions) while the program is already running.
+
+# Original class with a method
+class MyClass:
+    def greet(self):
+        return "Hello from the original greet method"
+
+# Instance of the original class
+obj = MyClass()
+print(obj.greet())  # Output: Hello from the original greet method
+
+# Define a new function to replace the original method
+def new_greet(self):
+    return "Hello from the monkey-patched greet method"
+
+# Apply monkey patching
+MyClass.greet = new_greet
+
+# Instance of the class after monkey patching
+print(obj.greet())  # Output: Hello from the monkey-patched greet method
+
+
+
+
+**  __init__():
+in simple words it is a way to create a constructor in python
+Constructor Method: __init__() is a special method called a constructor.
+It is automatically invoked when a new object of the class is created.
+Can include additional parameters to initialize attributes with specific values.
+does not return anything
+first arguement is always self
+syntax:
+def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+** main function in python:
+main function is entery point of program in some programming language but python interpreter runs code direclty from the first line, the executionstarts from first lie and goes line by line .it does not mean where the main function is located or not.
+
+Since no main functin hence python interpretere came to know where is to start is by seeing the code at level 0 indentaion
+
+
+** if __name__ == "__main__": 
+this pattern used in python scripts to determine whether the script is being run directly or being imported as a module into another script
+
+__name__    => it is built in variable that is automatically set to the name of current module 
+when run directly __name__ set to __main__
+when script is imported as a module in another script __name__ set as the name of module 
+use-> it is very usefull as if don't use it and import any python file to main python file then it get executed automatically. this may leads to huge problmes as other files may contain some harmfull code also
+
+declare in external file : the file that is being improted to main file 
+
+    
+
+
+**file I/O or file handeling in python:
+for doing any operation on file first we have to open it 
+open("filename.txt",mode)
+mode-> e for reading, w for writing and a for appending
+if we don't pass any mode then by default it is in read mode 'r'
+ get content:
+ f=open("filename.txt",'r/w/a')
+ text=f.read()
+ text1=f.read(5)-> reads only 5 character from the starting of file
+ print(text)
+ f.close() #if you are opening the file you have to close it as well
+ -> in write mode if we try to open the file which does not exist then it get created 
+ -> if we write on a file with 'w' mode and the file already has some content then the previous content get remove and current get placed in it 
+ -> if we don't want to remove the already existing content and also want to add some more content the use append 'a' it will append the file content with what we added from the code
+
+ -> 'x' mode creates a file and gives error if already exisit
+ -> 'rt' -> means we want to read the file as a text file (by default also text)
+ -> 'rb' -> means we want to read the file as a binary file gives output as: b'file content'
+ if we want to use jpg file, pdf file etc then we use 'rb'
+ 
+
+writting to the file:
+f=open("m.txt", 'w')
+f.write('hello some one')
+f.close() # important without it doesnot work
+
+append to the file:
+f=open("m.txt", 'a')
+f.write("this is yashsen")
+f.close() # important without it doesnot work
+
+as it is important to close the file, we also have one more way of writting and appending to the file:
+with open("m.txt",'w') as f:
+    f.wite("hello from one")
+
+
+some methods of file I/O:
+1) readline()-> so that we can read file line by line
+
+2) writeline()-> used to write a list of strings to a file without adding newline characters between them.
+write only takes string it takes list allows
+with open('example.txt', 'w') as file:
+    file.write(['Hello, ', 'world!', '\nThis is a test.'])
+3) seek(n)-> prints the file content after n characters, need to pass it with read(n) to read the file after the n character
+f.tell() tells how many character fwd we are in the file like if used with seek(5) return 5
+4) truncate(n)-> after running this whatever we write to the file the file wil contain only n cahracter not more than that
+
+
+** map, filter, reduce in python
+** packages and modules in python:
+

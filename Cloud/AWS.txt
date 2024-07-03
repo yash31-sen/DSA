@@ -1,0 +1,140 @@
+AWS(amazon Web services is an Cloud Computing service offered by amazon, which provides various services like EC2, S3, CDN, Load Balancing, AWS Labda etc...).
+
+EC2->Elastic Compute Cloud a service that allows user to virtual servers(instances) on demand.
+
+Instance Types:
+---------------
+General Purpose: T3 (e.g., t3.nano, t3.micro), M5 (e.g., m5.large, m5.xlarge) for versatile workloads like web servers and development environments.
+Compute Optimized: C5 (e.g., c5.large, c5.xlarge), C6g (e.g., c6g.medium, c6g.large) for compute-intensive tasks like batch processing.
+Memory Optimized: R5 (e.g., r5.large, r5.xlarge), X1 (e.g., x1.16xlarge) for memory-intensive applications like databases.
+Storage Optimized: I3 (e.g., i3.large, i3.xlarge), D2 (e.g., d2.xlarge) for high I/O workloads like data warehousing.
+Accelerated Computing: P3 (e.g., p3.2xlarge), G4 (e.g., g4dn.xlarge) for GPU-intensive applications like machine learning.
+
+___________________________________________________________________________________________________________________________
+S3(Simple Storage Service): A storage service by aws which allows us to store approximately unlimited amount of data.
+---------------------------   for using S3 we have to create a s3 bucket which must have globally unique name, we can create 100 s3 buckets per aws account. and one bucket can store 5tb of data
+provides static website hosting, bucket policies, versioning etc.
+Storage Classes:
+S3 Standard: For frequently accessed data.
+S3 Intelligent-Tiering: Optimizes costs for data with unpredictable access patterns.
+S3 Standard-IA: For infrequently accessed data requiring rapid access.
+S3 One Zone-IA: Cost-effective storage for re-creatable data stored in a single Availability Zone.
+S3 Glacier: Low-cost storage for long-term archival with flexible retrieval times.
+S3 Glacier Deep Archive: Lowest-cost storage for rarely accessed data with longer retrieval times.
+S3 Outposts: On-premises S3 storage for applications with local data residency needs.
+
+____________________________________________________________________________________________________________________________
+AWS Elastic Load Balancing:
+---------------------------
+it automatically distributes the incoming traffic across multiple targets such as ec2 instances, ip addresses ans containers.
+to insure no single resource is overwhelmed. and managing the traffic of app.
+
+_____________________________________________________________________________________________________________________________
+AWS Auto Scaling:
+-----------------
+Automatically adjusts the number of EC2 instances in a group based on demand. helps in maintaining the application availability, when resources not needed automatically scales down the resources.
+_____________________________________________________________________________________________________________________________
+IAM in aws:
+-----------
+Identity and Access Management lets you control who can access your AWS resources and what they can do with them.
+IAM user: individuals within the aws account
+Groups: Collection of users
+Roles: A role in AWS IAM is a set of permissions that define what actions are allowed by an entity (user, service, or application) within AWS.
+_____________________________________________________________________________________________________________________________
+Amazon RDS (Relational Database Service):
+-----------------------------------------
+it is relational database like MYSQL, Postgree SQL, and SQL server
+Amazon Dynamo DB:
+fully managed NoSQL database service provider by AWS.
+_____________________________________________________________________________________________________________________________
+Amazon VPC (Virtual Private Cloud):
+-----------------------------------
+A Virtual Private Cloud (VPC) in cloud computing is a dedicated, isolated section of the cloud where you can launch resources (EC2,S3 etc )in a virtual network that you define, providing complete control over your network configuration.
+public(web hosting), private subnets(database).
+Public Subnet: A subnet within a VPC that has a route to an internet gateway, making its resources accessible from the internet.
+Resources place here: load balancer, web server, web hosting 
+Private Subnet: A subnet within a VPC that does not have a direct route to an internet gateway, thus its resources are not directly accessible from the internet.
+					==how to access resources in it==
+VPN Connection: Purpose: Establish a secure connection between your on-premises network and the VPC, allowing access to resources in private subnets securely.
+NAT gateway: Outbound-only, Inbound traffic can't effect the resources inside it 
+	     required static ip address	
+_____________________________________________________________________________________________________________________________
+
+AWS CloudFront(CDN- Content Delivery Network):
+----------------------------------------------
+AWS CloudFront is a CDN that speeds up the delivery of your web content by caching it at edge locations close to your users, reducing latency and improving user experience.
+
+In it we distribute the data to multiple edge locations so when user req the data, req goes to the nearest edge location which reduces the latency and wait time of user.
+I helps is online confrences, video streaming, avoid dos and ddos attacks by absorbing the large amount of traffic in edge locations.
+
+Edge location: 
+--------------
+An edge location is a CDN data center that caches content closer to users to improve speed and performance by reducing the distance data has to travel.
+_____________________________________________________________________________________________________________________
+
+Amazon EBS (Elastic Block Store) vs S3 (Simple storage Service) vs EFS(Elastic File System):
+1)S3: Object storage, best for storing large amounts of unstructured data.
+EBS: Block storage, best for use cases requiring consistent low-latency and high-performance storage.
+EFS: File storage, best for use cases that require shared file access and can be mounted across multiple EC2 instances.
+2)S3: Accessed via APIs over HTTP/HTTPS.
+EBS: Accessed as block devices by EC2 instances.
+EFS: Accessed as a file system interface (NFS) by multiple EC2 instances.
+3)S3: Automatically scales with the amount of data stored.
+EBS: Requires manual resizing of volumes.
+EFS: Automatically scales to accommodate the amount of data stored.
+4)S3: Designed for 99.999999999% (11 9's) durability. Data is replicated across multiple facilities.
+EBS: High durability but typically within a single Availability Zone. Snapshots can be used for backup.
+EFS: High durability and availability. Data is stored redundantly across multiple Availability Zones within a region.
+
+_____________________________________________________________________________________________________________________
+Stop and Terminate actions in EC2:
+----------------------------------
+Stop: All data and settings are Saved you can start it backup later without loosing anything
+Terminate: loose everything and can't get it back
+_____________________________________________________________________________________________________________________
+AWS Lambda:
+-----------
+Serverless computing service 
+allow to run code without the need provisioning and managing server, upload code to lambda and it automatically scales and execute the code.
+_____________________________________________________________________________________________________________________
+Securing Data in AWS:
+---------------------
+for securing data in aws we can use:
+Encryption: KMS(Key Management Service) encrypts the data in S3,EBS,RDS;
+Access Control: IAM
+Network Security: VPC
+Monitoring and Logging: AWS CloudTrail to log all API activity for auditing purposes. Use Amazon CloudWatch for monitoring and setting up alarms on suspicious activity.
+
+_____________________________________________________________________________________________________________________
+AWS Cloud Formation:
+--------------------
+it enables us to define and provision AWS infrastructure as code using templates. We create a template and CloudFormation Automatically handles the provisioning and management of these resources
+using simple json etc...
+_____________________________________________________________________________________________________________________
+AWS SQS:
+--------
+Amazon Simple Queue Service (Amazon SQS) is a fully managed message queuing service that enables decoupling and scaling of microservices, distributed systems, and serverless applications. It allows you to send, store, and receive messages between software components without losing messages or requiring other services to be available.
+
+_____________________________________________________________________________________________________________________
+Elastic BeanStalk:
+------------------
+AWS Elastic Beanstalk simplifies the deployment and management of web applications by automatically handling the infrastructure, such as servers, load balancing, scaling, and monitoring.
+
+
+Real-World Example:
+Imagine a startup developing a web application that provides real-time language translation services. The development team wants to focus on improving the application's features rather than managing the underlying infrastructure.
+
+Using AWS Elastic Beanstalk:
+
+Deployment: The developers upload their application code (e.g., Java, Python, Node.js) to Elastic Beanstalk.
+Environment Setup: Elastic Beanstalk automatically provisions the necessary infrastructure (EC2 instances, load balancers, auto-scaling, etc.).
+Management: It handles the deployment, monitoring, scaling, and updates of the application.
+Scaling: During peak usage times, Elastic Beanstalk automatically scales the application to handle increased traffic.
+
+
+AWS data migration service AWS DMS;
+Data replication
+Data recovery	
+-- Example of setting up replication in MySQL
+CHANGE MASTER TO MASTER_HOST='source_host', MASTER_USER='replication_user', MASTER_PASSWORD='password', MASTER_LOG_FILE='log_file', MASTER_LOG_POS=log_pos;
+START SLAVE;

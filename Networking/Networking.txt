@@ -1,0 +1,192 @@
+Networking:
+-----------
+A process of making connections between the host devices or nodes through which they can share data with each other with the help of intermediary devices(switches and routers).
+
+-> hosts: all computers, laptops, mobiles connected to network are hosts
+-> Intermediary Devices: Switch, Routers, Hub.
+	-> all intermediary devices perform the function of repeater, means they can regenerate and retransmit the signal 
+Internet: the world 
+Extranet: Suppliers, customers, Collaborators
+Intranet: Only organization 
+
+-> A good network must be:
+	-> reliable 
+	-> Scalable
+	-> QOs
+	-> Network Security+
+_____________________________________________________________________________________________________________________________
+
+OSI Model(Open System Interconnection Model):
+---------------------------------------------		
+	-> The OSI (Open Systems Interconnection) model is a conceptual framework used to understand and implement network communications by dividing them into seven distinct layers
+	-> it is ISO certified model (International Organization for Standardization)
+It has 7 layers:
+
+1)Physical Layer:
+-----------------
+Function: Transmits raw bit streams over a physical medium (e.g., cables, radio waves).
+topologies
+full, half duplex, simplex
+Devices: Hubs, repeaters, network cables (Ethernet, fiber optics).
+Protocols: None (focused on hardware standards like IEEE 802.3 for Ethernet).
+
+2)Data Link Layer:
+-------------------
+Function: Provides node-to-node data transfer, error detection and correction, and MAC (Media Access Control) addressing.
+knows the type of media 
+have sub layers 
+-> Logical link layer sublayer
+	=>handles communication between upper an lower layer 
+	=>flow control 
+-> MAC sublayer 
+	=>It is the lower sublayer of data link layer
+	=>implemented by hardware, typically in the computer NIC
+	=>data encapsulation: Frame assembly before transmission and frame disassembly upon reception of frame 
+				=> adds header and the tailer to the network layer pdu
+				=> header: frame start ,addressing, type, control
+				=> Tailer: Error detection and frame end.
+	=>media access control
+	=>framing
+	=>physical or mac addressing 
+	=>error control with FCS(Frame Check sequence) or CRC(Cyclic Redundancy Check)
+	=>responsible for placing the frames on the media and removal of frames form the media 
+	=> uses CSMA/CD
+
+ 
+Devices: Switches, bridges.
+Frames are medium dependent (whether it is wireless or wired) 
+Protocols: Ethernet, PPP (Point-to-Point Protocol), MAC addresses.
+PPP-> directly connects two network devices or nodes eg: internet connection.
+
+3)Network Layer:
+----------------
+Function: Manages device addressing, identifies the best path to send data, and handles packet forwarding and routing.
+Devices: Routers.
+Protocols: IP (Internet Protocol), ICMP (Internet Control Message Protocol).\
+
+4)Transport Layer:
+------------------
+Function: Ensures end-to-end communication, data integrity, error recovery, and flow control.
+port number 
+end to end flow control (Sending and receiving speed match)
+segmentation and reassembly 
+Devices: Gateways, firewalls (partially operate at this layer).
+Protocols: TCP (Transmission Control Protocol), UDP (User Datagram Protocol).
+
+5)Session Layer:
+----------------
+Function: Manages sessions between applications, establishing, maintaining, and terminating connections.
+Digital control and synchronization
+Devices: None specific (this is typically handled by software).
+Protocols: NetBIOS, RPC (Remote Procedure Call).
+6)Presentation Layer:
+---------------------
+Function: Translates data between the application layer and the network, including encryption, compression, and data format translation.
+Devices: None specific (this is typically handled by software).
+Protocols: SSL/TLS (Secure Sockets Layer/Transport Layer Security), JPEG, ASCII, EBCDIC.
+
+7)Application Layer:
+--------------------
+Function: Provides network services directly to user applications, such as email, file transfer, and web browsing.
+Devices: None specific (this is typically handled by software).
+Protocols: HTTP (Hypertext Transfer Protocol), FTP (File Transfer Protocol), SMTP (Simple Mail Transfer Protocol), DNS (Domain Name System).
+
+
+
+_____________________________________________________________________________________________________________________________
+TCP/IP model:
+developed before (prior) OSI model 
+
+It has 4 layers
+TCP/IP								OSI
+Application Layer        : 		(Application+ presentation + Session) layer of OSI model.
+Represents data to the user plus encoding and dialog control 
+DNS, SMTP,POP,FTP, TFTP, HTTP
+----------------------------------------------------------------------------------------------------------------------------
+Transport Layer          : 		Transport Layer of OSI model.
+Process to Process communication
+supports communication between dicerse devices across diverse network 
+TCP, UDP
+----------------------------------------------------------------------------------------------------------------------------
+Internet Layer           : 		Network Layer of OSI model.
+Determines the best path through the network 
+NAT, ARP, ICMP, RIP, OSPF, BGP, EIGRP
+----------------------------------------------------------------------------------------------------------------------------
+Network Access Layer     : 		Data Link + physical Layer of OSI model 
+It controls the hardware devices and media that makes up the network.
+PPP, Ehternet, Interface Drivers
+----------------------------------------------------------------------------------------------------------------------------
+
+It is an Implementation	 :		It is referrene model 
+model 			
+----------------------------------------------------------------------------------------------------------------------------
+developed by ISO	 :		DARPA (Deffence Advanced Research Project Ajency)
+----------------------------------------------------------------------------------------------------------------------------
+
+_____________________________________________________________________________________________________________________________
+
+WAN>MAN>CAN>LAN>PAN
+WAN-> Internet 
+the major difference between them is of the distance (range)
+for connecting things in space we have 
+Radio Frequency (RF) Communications(Ku band, X-band, ka-band, S-band)
+
+LAN			 	WAN			 	PAN				CAN			Man
+Local Area Network	Wide Area Network		Personal Area Network 		Campus Area Network	Metropolitan
+----------------------------------------------------------------------------------------------------------------------------
+Upto 2 KM		above 50 km or 			1- 100 meter			1-5km			5-50km
+			thousands of km
+----------------------------------------------------------------------------------------------------------------------------
+Transmission Speed	Transmission Speed		Transmission Speed		Transmission Speed	
+Very high		high				Very High			High			AVG
+----------------------------------------------------------------------------------------------------------------------------
+within Office or	Within Countries		Within Room			Within University	Within City 
+building										Campuses
+----------------------------------------------------------------------------------------------------------------------------
+Ownership pvt		Ownership pvt or pub		Ownership pvt			Ownership pvt		Pvt or Pub
+----------------------------------------------------------------------------------------------------------------------------
+Ethernet and Wifi	FDDI, CDDI, ATM			Bluetooth, Zigbee		Ethernet		FDDI, CDDI
+							Irda							ATM
+----------------------------------------------------------------------------------------------------------------------------
+	
+_____________________________________________________________________________________________________________________________
+
+
+
+classes of ip address:
+class A:1-126
+private: 10.0.0.0 to 10.255.255.255
+subnet mask -> 255.0.0.0
+
+Class B:128-191
+private:172.16.0.0 to 172.31.255.255
+subnet mask-> 255.255.0.0
+
+class C: 192-223
+private: 192.168.0.0  to 192.168.255.255
+subnet mask-> 255.255.255.0
+
+Class D (Multicast)
+Range: 224.0.0.0 to 239.255.255.255
+Private IP Addresses: Not applicable as Class D is used for multicast purposes.
+
+
+
+0.0.0.0 can also be used as a broadcast address within a network, depending on the subnetting scheme used.
+127.0.0.1 -> loopback address 
+
+_____________________________________________________________________________________________________________________________
+subnetting:
+borrowing bits from host to create more networks
+in it we reserve the most significant bit 
+eg: divide the given address to 2 subnets 
+200.12.14.0/24
+sunets are -> 200.12.14.0.[0.0.0.0.0.0.0]->1st subnet
+			  200.12.14.1.[0.0.0.0.0.0.0]-> 2nd subnet
+
+
+
+points to remember:
+Ethernet bandwidth: upto 100 gbps
+
+

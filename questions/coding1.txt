@@ -1,0 +1,8 @@
+2)reversing array -> run loop only half time n/2 then simple swap mwchanism
+3)equilibrium index: create function int find_sum(int *arr, int s, int e) now use in main function
+4)right rotate array k times: approach 1-> take 1 array store the values after k to n in it and other array in which store the value of 0 to k and then run loop form 0 to n store array1 then array 2 to main array done
+approach 2-> reverse(arr,s,n-k-1); reverse(arr,n-k,n-1), reverse(arr,0,n); done
+5)array subset of array: 
+6) find all symeetic pair in 2d array: run nested lopp and use if condition like that if (arr[i][0] == arr[j][1]
+                and arr[i][1] == arr[j][0])
+7)add 2 metrices:

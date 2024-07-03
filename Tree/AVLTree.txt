@@ -1,0 +1,8 @@
+An AVL tree (Adelson-Velsky and Landis tree) is a type of self-balancing binary search tree (BST).
+    ->it has, Balance Factor=Height of Left Subtree−Height of Right Subtree (= -1,0,+1)
+if the condition of balance factor get violeted (less than -1 or greater than +1), the tree is rebalanced using rotaions 
+RR(Right rotaion)->used when the left subtree is too tall
+LL rotaion
+LR rotaion
+RL rotaion
+

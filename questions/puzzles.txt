@@ -1,0 +1,13 @@
+1) https://www.geeksforgeeks.org/tcs-digital-puzzle-lateral-thinking/.
+2) 3 bulbs in a room and 3 switches outside the room: you are allowed to enter the room only once tell which switch belong to which bulb.
+3) you have one 3 liter jug and 5 liter jug and unlimited water now calculate 4 liter of water with it.
+4) you have numbers 1,2,3,4,5 tell how many prime numbers can be formed by rearranging the numbers?
+	-> None because 1+2+3+4+5=15 and 15 is divisible by 3 also and sum of 1+5 is 6 which is also divisible by 3 and 2
+5) A father has 17 horses he gives 1/2 to his first son ,  2/3 of what is left to his 2nd son and 2/3 of what is left to his 3rd son. How?
+	-> if we divide the 17 horses by 2 then it's not possible to do so/
+	   approach add one imaginary horse to 17 horses 
+	   now 1sr son get 18/2 =9
+	   2nd son get 9*2/3=6
+	   3rd son get 3*2/3=2
+	   now 9+6+2 =17 and the remaining horse is the imaginary one
+6) 

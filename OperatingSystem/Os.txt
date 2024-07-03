@@ -1,0 +1,416 @@
+Opearating System:
+An Operating System can be defined as an interface between user and hardware. It
+is responsible for the execution of all the processes, Resource Allocation, CPU
+management, File Management and many other tasks. The purpose of an operating
+system is to provide an environment in which a user can execute programs in a
+convenient and efficient manner.
+Types of OS:
+1)Batch OS:There is an operator which takes similar jobs having the same requirement and groups them into batches. 
+A job gets assigned to the CPU, only when the execution of the previous job completes.
+eg:Bank Statement, payrole system
+2)Multi-Programming Operating System: CPU never kept idle in these os.
+main memory has a set of process in it waitng for CPU os select one and execture it
+whenever the executing process wait for some I/Om opeartions os select another porcess from the queue to eexecute
+eg: windows, linux, macos,android, ios
+3)Multitasking OS: It can run multiple programs simultaneusy
+increase resource utilitzation 
+with the help f CPU scheduling it performs switches between the jobs
+eg: windows, linux, macos,android, ios
+4)Time Shearing OS: Each task is given some time to execute so that all the tasks work smoothly. Each user gets the time of the CPU as they use a single system. These systems are also known as Multitasking Systems. The task can be from a single user or different users also. The time that each task gets to execute is called quantum. After this time interval is over OS switches over to the next task. 
+if time quantum completed but the task isn't completed the cpu will get switched and the task get paused.
+short context switching.
+eg: IBM vm/cms
+5)Distributed OS:widely used now, remote access, can access that file also which is not present in one computer
+eg: LOCUS,Microsoft Azure and Google Cloud Platform, GFS
+6)Real time OS:These types of OSs serve real-time systems. The time interval required to process and respond to inputs is very small. This time interval is called response time. 
+Real-time systems are used when there are time requirements that are very strict like missile systems, air traffic control systems, robots, etc.
+a)hard real time
+b)soft real time
+7) Network OS:servers etc
+
+________________________________________________________________________________________________________________
+Program vs process vs thread:
+
+1)Program:It is a set of instruction written in a programming languages that performs specific set of tasks
+Passive entity as it resides in a secondary memory
+Static entity
+2)Process: It is a Instance of program
+when a program loaded into the memory and executed it becomes process
+they can be concurrent and comunicates with each other through inter-process communication
+dynaic entity 
+Every Process has its own PCB(process controll block).which all the informations realted to that process like memory taken by the process, registers needed, program counter
+Types:IO bound and CPU bound
+3)Thread:Threads are also called lightweight processes as they possess some of the properties of processes
+A process can have multiple Threads
+They share the same memory space and resources(code and data) within the process however each thread has its own program counter and stack
+it has faster context swithcing
+blocking one thread will block entire process
+Types of threads:
+a) User Level: user is responsible for creating threads
+b)kernel level threads: managed by OS.
+slower than user threads
+context switching is slower
+if one kernel level thread is blocked then no effect on others
+Now hybrid env is used (kerne + user)
+
+
+
+________________________________________________________________________________________________________________
+System Calls:
+When we have to use the functionalitites of OS, we have to enter the kernel mode, so to enter the kernel mode we use system calls
+like we uers printf() to print anything in the monitor it is not system call but it is calling the system call to print things to system
+windows has aorund 700 system calls
+can call directly or through apis or programs etc
+types:
+1)File Related: open(), read(), write(), createFile() etc.
+2)Device Realted: read,write, reposition, I/Octl ,fctl
+3)Information Related:getPid,attribute, get systemtime and data, get ppid
+4)Process control: wait, signal, allocate, fork(),execute, load
+5)communication: pipe(), create/delete, signout
+6)security : chmod
+
+________________________________________________________________________________________________________________
+kernel and types in os:
+Definition of Kernel: The kernel is the core component of an operating system
+ that manages system resources and facilitates interactions between hardware and 
+ software. It acts as a bridge between applications and the hardware of a computer,
+ handling critical tasks like process management, memory management, 
+ device management, and system calls.
+ Types:
+ Monolithic Kernel:
+
+Description: All operating system services run in a single large block of code in
+a single address space. The kernel is one large program that executes in a privileged
+ mode.
+
+Microkernel:
+
+Description: Only essential functions such as communication between hardware and
+ software run in the kernel mode. Other services like device drivers, file systems, 
+ and network protocols run in user space.
+
+
+ Macro Kernel: Macro Kernel is a combination of micro and monolithic kernel
+
+
+
+________________________________________________________________________________________________________________
+Fragmentation is a phenomenon of memory wastage. It reduces the capacity
+ and performance because space is used inefficiently.
+ 1. Internal fragmentation: It occurs when we deal with the systems that
+ have fixed size allocation units.
+ 2. External fragmentation: It occurs when we deal with systems that have
+ variable-size allocation units.
+________________________________________________________________________________________________________________
+Multiprocess, multiprogramming, multitasking and multithreading     
+
+1)multiprogramming:It is non preemtive.
+multiple programs reside in the computer's memory simultaneously, and the CPU executes them by switching among them. 
+a running process will continue until it completes or requires I/O operations, at which point the CPU will switch to another process.
+2)Multiprocessing: Using two or more CPUs within a single computer system.
+Preemtiveness depends on the os used
+3) multitasking/time sharing:Multitasking is the ability of an operating system to execute multiple tasks (or processes) over a certain period, sharing resources and time slices among them.
+4)multithreading: Multiple threads are created within a single process, allowing concurrent execution.
+: In preemptive multithreading, the operating system or runtime can switch between threads without the thread's cooperation. In non-preemptive multithreading, threads run until they voluntarily yield control, which is less common in modern systems.
+
+
+________________________________________________________________________________________________________________
+Process Scheduling:
+ 1. Arrival Time– Time at which the process arrives in the ready queue.
+ 2. Completion Time– Time at which process completes its execution.
+ 3. Burst Time– Time required by a process for CPU execution.
+ 4. Turn Around Time– Time Difference between completion time and arrival time.
+ full time when enters ans when leave   
+ Turn Around Time = Completion Time - Arrival Time
+ 5. Waiting Time (WT)– Time Difference between turn around time and burst time.
+ Waiting Time = Turnaround Time - Burst Time
+ or total time - usefull time
+ 6)Response Time: point of time cpu get first time-arrival time
+
+________________________________________________________________________________________________________________
+process life cycle and process state diagram:
+1)New: proces is about to be created, in this state the it is in secondary memory
+<Long term schedular> is responsible for sending process from new state to readyu state
+2)Ready: After the creation of process the process enters the ready state, here porcess loaded into the main memory
+<Short term schedular> is responsible for sending process from ready state to running state
+3)Running: The process is choosen by cpu for execution from the ready queue
+4)Blocked/Wait: whenever a process needs IO or need input from the user it enters the wait/blocked state and wait here untill IO get completed. Once IO operation completed it goes to ready state
+5)Terminated/Completed:Process is killed as well as the pcb is deleted all the resource given to process are freed up now
+---
+<medium term schedular> is responsible for sending the process from wait to suspended wait
+6)Suspended Wait: when number process requireing a IO increses and the memory in the wait queue is filled then the porcess sent to suspended wait and sent to secondary memory to perform there IO operations
+after completing the IO work if sapce is available then again go ot wait state
+if not able to go to wait state due to no memory available then goes to suspended ready state
+7)Suspend Ready: when the ready state is filled up and some vvip process like kernel level process then we need space for it so we send process to suspend ready state to provide space for the process with high priority
+ans when space in ready queue is empty the same process will come to ready state again
+<medium term schedular> is responsible for sending the process from ready to suspended ready
+
+________________________________________________________________________________________________________________
+CPU Schduling algorithms:
+Schduling algorithm is a way of teking process from ready queue and sending them for execution in cpu
+Scheduling algorithms are of 2 types :
+1)preemptive-> reason to preemt is the time quantum and priority
+->SRTF(Shortest Remaining time First)
+->LRTF(Longest Remaining time First)
+->Round Robbin:
+->Priority: (it can be considered as both preemptive and non preemptive but generally it is preemptive)
+2)non-preemtive
+->FCFS(First Come First Serve)
+->SJF(Shortest Job First)
+->LJF(Longest job first):
+->HRRN(highest response ratio next)
+->multilevel queue
+->Priority:
+
+
+------------------  
+1)FCFS(First come first serve ): it is no preemptive process 
+Schedules according to the arrival time of the process
+implemented using FIFO queue
+2)SJF(Shortest JOB First): it is non preemptive process
+schedies according to the burst time
+check which process arrived at time t then check which has lowest burst time and select it
+
+->LJF(Longest job first):
+LJF is a non-preemptive process scheduling algorithm that selects the process with the largest burst time for execution next.
+->HRRN(highest response ratio next):HRRN is a non-preemptive process scheduling algorithm that selects the process with the highest response ratio next.
+
+3)SRTF(shortest reamaining time first):SJF with prremption
+criteria burst time
+use criteria when there are multiple process only
+4)Round Robbin Schduling:every process gets a fixed amount of time quantum to execute the process.
+processes that have their burst time remaining after the expiration of the time quantum are sent back to the ready state and wait for their next turn to complete the execution until it terminates.
+done in FIFO order 
+criteria time quantum
+5)Priority Scheduling:Criteria ->priority
+with every process their priority is given , we have to find that what is the order of prioirty like lower to higher or higher to lower
+->multilevel queue:
+Multilevel queue scheduling is a process scheduling algorithm that divides the ready queue into multiple separate queues, each with its own scheduling algorithm. Processes are permanently assigned to a queue based on certain characteristics, such as priority, memory size, or process type.
+
+________________________________________________________________________________________________________________
+Paging:
+Paging is a storage mechanism used to retrieve processes from the secondary storage into the main memory in the form of pages.
+In paging we divide the process in to pages and send it to the main memory, main memory is divided into frames 
+and the size of frames and pages must be equal
+One page of the process is stored in one frame of the memory.
+advantages: 
+1)Eiminate external fregmentation
+2)Efficient memory allocation:Fixed-size pages and frames make it easier to allocate and deallocate memory without having to find contiguous blocks of memory.
+3)Protection and Isolation::Paging helps enforce memory protection by ensuring that each process can only access its own pages, as defined in its page table.
+
+
+ex:the data can be stored anywhere in the main memory, and CPU ask for the bytes in process it does not generates absolute adderss(cpu always generate logicall address) so we need a mapping here which maps the cpu (byte)req with the address given by memory for the byte of process which is done by the memory management unit
+here memory management unit convert the addres generatad by CPU to absolute address by using page table
+logical adress=page_number + page_offset
+physical address=main memory address =frame_number+frame_offest
+-> every process has its own page table
+enteries in page table = number of pages in which the process is divided
+page table
+page0 - frame2
+page1 - frame8
+
+________________________________________________________________________________________________________________
+Virtual Memory: it is a concept that lets computer use more memory than it actually has
+it createds an imaginary memory space by combining pyhsical memory and the secondary memory
+when program needs more memory than the computer has then it moves some data to the secondary storage then use demand paging
+
+Demand Paging:Demand paging is a memory management technique used in virtual memory systems where pages of memory are only loaded into RAM when they are needed during program execution, rather than loading all pages at the start.
+
+Page Fault: if the referred page in not present in the main memory then it called as page miss or page Fault
+
+________________________________________________________________________________________________________________ 
+page replacement algorithms:
+when we are using demand paging we are keeping the pages in the memory so wehn cpu doe not finds the page in the memory then it generates a page fault 
+so to reduce page faults we us page replacement algorithms:
+1)First in first out(FIFO):
+in this algorithm if the given number of frames in the memory is occupied then we replace the fist page that enters the memory
+->it has large number of page faults
+-> it also has bledy anomaliy:blody anomoly is that , if we increase the number of frames then the page fault must be reduced but in this algo it doen't happen it some times give more number of page faults for laege number of frames or frame size also
+
+2)Optimal Page replacement algorithm: whenever teh page fault occurs we replace the page which is not is longest dureation of time in future
+it is not featsible
+we have to know the requirement of cpu in advance which is not possible in general
+3)LRU(Least Recenetly Used):we replace the page which is least recently used in the past\
+<- check in this direction , check for recently used if duplicates are present then teke fisrt occureence not last.
+4)MRU(MOST Recently used)": just replace teh first one that is most recently used
+
+
+
+________________________________________________________________________________________________________________
+Thrashing: 
+if degree of multiprogramming is very hight (out of range) then thrashing occures
+Thrashing is a condition or a situation when the system is spending a major portion of its time servicing the page faults, but the actual processing done is very negligible. 
+
+
+________________________________________________________________________________________________________________
+Segmentation:
+it comes in existence bcz of the problem with the paging.
+for eg: if we have main function we have to execute it completely but bcz of paging it get divided in let say 2 parts so first so on executing first part cpu also demands for the 2nd part which will increase the page faults.
+Here comes the segmentation, it divides the process into segments or modules and then they exectue togehter
+segmentation gives the user view of the process
+Unlike paging segments need not to be of same size
+
+
+________________________________________________________________________________________________________________
+Disk Management(Secondary Memory)
+-> a disk a number of tracks in which they stores the data in various secotors present in the track which is readed by the moving head
+tracks move in a circular motion and head movies in x ,y direction fwd bckwd
+Seek Time:time take by the head to find the sector in which read write operation has to be performed
+
+
+________________________________________________________________________________________________________________
+Disk Scheduling algorithm
+1)FCFS-> is the simplest of all the Disk Scheduling Algorithms. In FCFS, the
+ requests are addressed in the order they arrive in the disk queue
+2)In SSTF (Shortest Seek Time First)->, requests having the shortest seek time
+ are executed first. So, the seek time of every request is calculated in advance in a
+ queue and then they are scheduled according to their calculated seek time. As a
+ result, the request near the disk arm will get executed first
+eg: if disk head is at 50 and the req in the queues are 100,80,9,51
+thent the order of exectution of req is 51, 80,100,9
+
+3)SCAN->also called as elevator algo
+In SCAN algorithm the disk arm moves into a particular direction and
+ services the requests coming in its path and after reaching the end of the disk, it
+ reverses its direction and again services the request arriving in its path. So, this
+ algorithm works like an elevator and hence is also known as elevator algorithm.
+ 4)C-SCAN-> The C-SCAN (Circular SCAN) algorithm is a disk scheduling algorithm that 
+ is similar to the SCAN algorithm but with a slight modification. In C-SCAN, the disk
+arm moves in one direction servicing requests until it reaches the end of the disk.
+Instead of reversing direction, it jumps back to the beginning of the disk and starts 
+servicing requests again in the same direction.
+
+bcz in scan  it may be possible that too many requests
+ are waiting at the other end or there may be zero or few requests pending at the
+ scanned area
+
+5)LOOK-> LOOK:It is similar to the SCAN disk scheduling algorithm except for the difference
+ that the disk arm in spite of going to the end of the disk goes only to the last request
+ to be serviced in front of the head and then reverses its direction from there only.
+ Thus it prevents the extra delay which occurred due to unnecessary traversal to the
+ end of the disk.
+if the disk size is 199 and the last request is 180 then it go to 180 and then 
+reverses its path unlike scan whihc go to 199(at last)
+6)C-LOOK->As LOOK is similar to C-SCAN algorithm, CLOOK is similar to CSCAN disk
+ scheduling algorithm. In CLOOK, the disk arm in spite of going to the end goes only
+ to the last request to be serviced in front of the head and then from there goes to the
+ other end’s last request. Thus, it also prevents the extra delay which occurred due to
+ unnecessary traversal to the end of the disk.
+ here the difference is that instead of going to zero at the other end and 
+ at last on the  fwd end we just go to to the last req value at both ends
+
+________________________________________________________________________________________________________________
+Synchronization Tools:
+1) Seamphore: it is an integer variable which is used in mutually exclussive manner
+by various concurrent cooperative process in order to achieve Synchronization 
+types:
+1)counting Seamphore:it is an integer variable whose value
+ can range over an unrestricted domain.
+2)binary Seamphore: take only 0 and 1 as value and are used
+ to implement mutual exclusion and synchronize concurrent processes.
+
+->Critical Section: a place were commn codes of multiple process is stored 
+opeartions->[p()/down/wait] and [v()/up/signal/post/release]
+->remainder section-> section other than critical section
+
+down->entry Section
+up->exit section
+
+Mutex: A mutex is a synchronization primitive that provides mutual exclusion, allowing only one thread to access a critical section at a time.
+
+Semaphore: A semaphore is a synchronization primitive that controls access to a resource with a counter, allowing multiple threads to access the resource up to a specified limit.
+
+
+
+________________________________________________________________________________________________________________
+● Deadlocks (Important):
+ A situation where a set of processes are blocked because each process is holding a
+ resource and waiting for another resource acquired by some other process. Deadlock
+ can arise if following four conditions hold simultaneously (Necessary Conditions):
+
+ 1. Mutual Exclusion– One or more than one resource is non-sharable (Only one
+ process can use at a time).
+ 2. Hold and Wait– A process is holding at least one resource and waiting for
+ resources.
+ 3. No Preemption– A resource cannot be taken from a process unless the process
+ releases the resource.
+ 4. Circular Wait– A set of processes are waiting for each other in circular form.
+if all these condition staisfies there is deadlock , if any one of them is not staisfies then 
+there is a chance that there is no deadlock
+
+
+Methods for handling deadlock: There are three ways to handle deadlock
+ 1. Deadlock prevention or avoidance : The idea is to not let the system into a
+ deadlock state.
+ 2. Deadlock detection and recovery : Let deadlock occur, then do preemption to
+ handle it once occurred.
+ 3. Ignore the problem all together : If deadlock is very rare, then let it happen and
+ reboot the system. This is the approach that both Windows and UNIX take.
+ Apni Kaksha
+ 5
+● Banker's algorithm is used to avoid deadlock. It is one of the deadlock-avoidance
+ methods. It is named as Banker's algorithm on the banking system where a bank
+ never allocates available cash in such a manner that it can no longer satisfy the
+ requirements of all of its customers
+ Definition: The Banker's Algorithm is a deadlock avoidance algorithm used in 
+ operating systems to allocate resources to processes in a way that ensures the 
+ system remains in a safe state, meaning that all processes can complete without 
+ causing a deadlock. It does this by simulating resource allocation for each request 
+ and checking if there exists a sequence in which all processes can be safely executed to completion.
+
+________________________________________________________________________________________________________________
+● The Critical Section Problem:
+ 1. Critical Section– The portion of the code in the program where shared variables
+ are accessed and/or updated.
+ 2. Remainder Section– The remaining portion of the program excluding the Critical
+ Section.
+ 3. Race around Condition– The final output of the code depends on the order in
+ which the variables are accessed. This is termed as the race around condition.
+ A solution for the critical section problem must satisfy the following three conditions:
+ 1. Mutual Exclusion– If a process Pi is executing in its critical section, then no other
+ process is allowed to enter into the critical section.
+ 2. Progress– If no process is executing in the critical section, then the decision of a
+ process to enter a critical section cannot be made by any other process that is
+ executing in its remainder section. The selection of the process cannot be postponed
+ indefinitely.
+ 3. Bounded Waiting– There exists a bound on the number of times other processes
+ can enter into the critical section after a process has made a request to access the
+ critical section and before the request is granted
+Race condition:
+A race condition is a problem that occurs in an operating system (OS) where two or
+ more processes or threads are executing concurrently. The outcome of their execution depends on the order in which they are executed.
+
+
+________________________________________________________________________________________________________________
+Memory Management: These techniques allow the memory to be shared among
+ multiple processes.
+ ● Overlays– The memory should contain only those instructions and data that are
+ required at a given time.
+ ● Swapping–In multiprogramming, the instructions that have used the time slice are
+ swapped out from the memory.
+ ● Techniques :
+ (a) Single Partition Allocation Schemes– The memory is divided into two parts. One
+ part is kept to be used by the OS and the other is kept to be used by the users.
+ (b) Multiple Partition Schemes
+1. Fixed Partition – The memory is divided into fixed size partitions.
+ 2. Variable Partition – The memory is divided into variable sized partitions.
+ Note : Variable partition allocation schemes:
+ 1. First Fit– The arriving process is allotted the first hole of memory in which it fits
+ completely.
+ 2. Best Fit– The arriving process is allotted the hole of memory in which it fits the best
+ by leaving the minimum memory empty.
+ 3. Worst Fit– The arriving process is allotted the hole of memory in which it leaves the
+ maximum gap.
+ Apni Kaksha
+ 6
+Note:
+ ● Best fit does not necessarily give the best results for memory allocation.
+ ● The cause of external fragmentation is the condition in Fixed partitioning and
+ Variable partitioning saying that the entire process should be allocated in a
+ contiguous memory location.Therefore Paging is used.
+
+
+
+
+Windows file system: NTFS(New Tecxhnology File System)
+Linux File System: ext4(Extended 4)

@@ -1,0 +1,24 @@
+In this internship my role was of AR/VR developer trainee. In this internship I aquired knowledge of one of the latest technology i.e AR/VR. In this internship I make use of unity 3d engine to develop AR/VR application and games.
+other tools that I utilize in the internship are 
+a)Vuforia Engine: It is an SDK for AR applications which allows applications to present an imerssive AR model or experience to the user by scanning an image.
+b)XR plugin: The XR Plugin Manager was used to integrate both AR and VR capabilities into our projects
+it is built in in unity, like i use it in Enemy Shooter game, so that the user can handle the gun to shoot thè enemy
+C)TechXR SDK: XR-> Extended raelity, 
+
+steps to create an VR game:
+1)import VR SDK
+        upon importing XR SDK you will find one option to craete a cube VR Scene
+        and it also has a built in cube provided by TexhXR whihc we simply change by gonit to Vuforia engien store our own images of the cube there and then paste the licence in the main camera
+        -> for pointing to the objects or enemy we use raycast (it is an rich function in unity which returns boolean value whether the object is hit or not)
+        Physics.Raycast(ray, out hit, attackRange)
+        if (Physics.Raycast(ray, out hit, attackRange)) // Shoot the ray and store info in hit
+    {
+      if (hit.collider.gameObject.tag == "Enemy") // Check if the hit object has an "Enemy" tag
+      {
+        destroy the enemy
+        Debug.Log("Enemy Hit!");
+      }
+    }
+2)enable VR
+3)Crate Scene by making ground plane
+4)XR=AR+VR+MR;

@@ -1,0 +1,43 @@
+Integer Types
+char: 1 byte (typically 8 bits)
+bool: 1 byte (typically 8 bits)
+short: 2 bytes (typically 16 bits)
+int: 4 bytes (typically 32 bits)
+long: 4 bytes (typically 32 bits) on 32-bit systems and often 8 bytes (64 bits) on 64-bit systems
+long long: 8 bytes (typically 64 bits)
+Floating Point Types
+float: 4 bytes (typically 32 bits)
+double: 8 bytes (typically 64 bits)
+long double: 8, 12, or 16 bytes (depending on the compiler and platform)
+Other Types
+wchar_t: 2 or 4 bytes (depending on the compiler and platform)
+char16_t: 2 bytes (typically 16 bits)
+char32_t: 4 bytes (typically 32 bits)
+void* (pointer): 4 bytes on 32-bit systems and 8 bytes on 64-bit systems
+
+
+size of pointer variable: 4 bytes for all types(int 32 bit compiler for 64 bit it is 8 bytes)
+
+
+
+
+// Data Type Size and Range Table
+
+/*
+Data Type          Size (bytes)  Range
+------------------ -------------- -------------------------------------
+short int           2             -32,768 to 32,767 (Signed)
+unsigned short int  2             0 to 65,535 (Unsigned)
+unsigned int        4             0 to 4,294,967,295 (Unsigned)
+int                 4             -2,147,483,648 to 2,147,483,647 (Signed)
+long int            4             -2,147,483,648 to 2,147,483,647 (Signed)  // Might be same as int on some systems
+unsigned long int   4             0 to 4,294,967,295 (Unsigned)
+long long int        8             -(2^63) to (2^63)-1 (Signed)
+unsigned long long int  8          0 to 18,446,744,073,709,551,615 (Unsigned)
+signed char         1             -128 to 127 (Signed)
+unsigned char        1             0 to 255 (Unsigned)
+float                4             -3.4e+38 to 3.4e+38 (approx)
+double               8             -1.7e+308 to 1.7e+308 (approx)
+long double          12            -1.1e+4932 to 1.1e+4932 (approx)
+wchar_t              2 or 4         1 wide character
+*/

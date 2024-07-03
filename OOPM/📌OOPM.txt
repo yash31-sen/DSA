@@ -1,0 +1,360 @@
+
+c++-> starting called as C with classes
+opertor overloading, dunction overlaoding ,const , new , delete before do,scope resolution operator doe not exist before 1985,  thery get addedd afterwards
+What is oops?
+Ans-> Programming Technique where this are revolve around objects.
+	-> it is an template
+
+Object-> it is an entity which have some properties and behaviour.
+	-> instance of class
+
+when we create oject only then memory get allocated to it 
+
+*for empty class i.e. class with nothing there is 1 byte of memory alocated to object ()
+we can also include class from diffrent file by using #include<path_of_file> and then same syntax; 
+
+real life exmaple of oops-> a car can be an object with properties like color, model, speed, and actions like accelerating and braking.
+
+
+________________________________________________________________________________________________________________________________________
+													======Access modifiers========
+
+Access modifiers:-> Any data member/function where we can access it is defined by access modifiers.
+There are 3 types of modifieres:
+	-> public  -> all those members that are in public we can access them both inside or outside the class
+	-> private (default) -> all memebers are accessible inside the class but not outside the calss
+	-> protected -> all those members that are in protected we can access them inside the class and in subclasses (child classes), but not outside the class. 
+Note-> we can access the private and protected variables and fuctions by creating a function inside the class they are creted or inherited (protected only) and access them with that fucntion.
+
+
+
+________________________________________________________________________________________________________________________________________
+									============Getter/ Setter function:===========
+Getter/ Setter function:
+	-> these are functions inside the class through which we can access the private and protected members of class 
+	-> setter that sets the value of member, also we can set conditions with it 
+	-> getter to get the value of member
+
+________________________________________________________________________________________________________________________________________
+									===========Advantages of OOPS:================
+Advantages of OOPS:
+-> Code resuability.
+-> Reduce redundancy.
+-> Bottom Approach
+-> Helps in hiding un-necessary details with abstraction.
+
+
+________________________________________________________________________________________________________________________________________
+											================padding and Greedy alignment?===============
+What is padding and Greedy alignment?
+-> present only statically types languages, not present in dynamically typed languages as they aim to provide high level of abstraction and didn't aim to provide much memory management related information
+=>padding-> Padding refers to the extra bytes added by the compiler between members of a struct or class to ensure proper alignment of each member.
+example-> 
+struct Example {
+    char a;
+    int b;
+    char c;
+};
+
+1) without padding->| a (1 byte) | b (4 bytes) | c (1 byte) |   || sizeof strcut =6 bytes
+2) with padding-> | a (1 byte) | padding (3 bytes) | b (4 bytes) | c (1 byte) | padding (3 bytes) |   || sizeof struct = 12 bytes
+
+=>Greedy Alignment-> Greedy alignment is a strategy used by compilers to minimize the amount of padding required in a struct or class by reordering its members. The goal is to group members with similar alignment requirements together to reduce gaps caused by padding.
+
+example-> 
+struct ExampleGreedy {
+    int b;
+    char a;
+    char c;
+};
+with grredy layout-> | b (4 bytes) | a (1 byte) | c (1 byte) | padding (2 bytes) |  || only 8 bytes of memory required (where in padding it requires 12 bytes of memory
+
+________________________________________________________________________________________________________________________________________
+											============Constructor and Distructor=====================
+
+*when we create any object firstly its constructor get called, which has no return type and input parameter
+** when we create a class its constructor automatically get called
+** default constructor is public by default but we can change it as per our need
+** this is a pointer which stores the address of current pointer 
+			-> it is very usefull when we have to use below scnenerio
+				-> health=health     -:> it can ber written as 
+				-> health =this.health    -:> where this.health is nearest object in the class
+** arrow operator uses with pointers objects to acces its data members and functions 
+** ones we create our own constructor definition then defualt constructor will automatically get destroyed.
+** if we don't define our own destructor then default desctrucor get created but it calls onlt when the object has done its work or when the object is destroyed to clean up the memory.
+** constructor is used to initialize the object of the class
+**must have same name as class
+** constructor not taking any parameters is called as default constructor 	 	
+** it should be declared in the public section of class else it can't be invoked when we call the object
+** do not have return types
+** we can't refers their address 
+			-> as while accessing the object's members with arrow operator we are directly accessing teh members not their address
+** we can pass the value to constructor in 2 ways implicit and explicit 
+* implicit-> A(4,6);
+* ecplicit-> A a=A(4,6);
+
+** advantages:
+	-> no need to create setter and getter function directly make a parameterized construcotr and set the vales also get teh values 
+
+============Constructor overloading:
+we can create as many constructor in the class with diffrent parameters while calling object whose parameteres match get calle. As in overloading the name must be same so construcotr already have same names as class it is called constructor overloading
+* it's important to create one non parameterized constructor so that when compiler has to initialize the object without parameter it find one.
+
+============Constructor with default arguments:
+initializing thè parameter of constructor durin declearation of construcotr 
+eg-> A(int a,int b=3);
+if you don't give the value of already initialized paraemeter it will take the dafualt value
+
+**Copy contructor:
+	-> A copy constructor is called automatically when an object is initialized from another object of the same type
+** we can also create our own copy constructor like A(&a)-> here we have to pass the value of other object by refrence instead of by value, if we passed it by value then it stuck in a loop or give error. 
+
+**=-=> it creates the copy of other objects like if I want to create a constructor z1 that exatly resembles the z then we will create z1 as copy constructor and pass z inside it 
+example-> A(A &aobj){
+	cout<<"Copy contructor called"<<endl;
+	a=obj.a;
+}
+
+1) obj a,b,c;
+A a1(&a);copy constructor called bcz the obj is created in the same line
+b=a won't called bcz b is already created 
+A d=a; get called bcz d is created just now in the same line
+now it will print the exact same value of obj as of ther in actual obj
+
+
+
+***-> when no copy construcotor is found copiler calls its own copy constructor 
+so if we remove the definition of copy constructor from class but use in main function then also it wiil not give any error
+**Shallow and Deep Copy:
+		->default copy constructor does shallow copy
+		-> ** in shallow copy the values of second object has reffrence to the value of first object 
+			when we change the value of first object the value of second object automatically get changed.
+		-> ** in deep copy the new members are created an the value of first object is stored in that new member before any change 
+			in first object, here if the value of first object get changd then also the value of second object does not 				changes.
+
+**Copy assignment operator
+
+
+**Distructor-> used to deallocate memory
+**when a class created it also get automatically created like default constructor
+** for objects we created using static allocation the distructor automatically get called
+** but we have to call the distructor mannualy for object created with dynamic memory allocation 
+				-> delete obj_name;
+
+________________________________________________________________________________________________________________________________________
+												========dynamic initialization of objects=================
+// Dynamically allocating an object of class A
+A* ptr = new A(10); // Constructor is called
+// Accessing members and methods using the arrow operator
+ptr->display();
+// Deallocating the memory
+delete ptr; // Destructor is called
+***
+the main difference between static and dynamic allocation is that is static allocation the memory automatically freed by as destructor fres the memory after the object has finished its execution
+while in dynamic allocation the can't be fees automatically we have to do it by delete ptr;
+static -> stack
+dynamic-> heap with new keyword
+also when we create static objects and print something from construcotr and distructor , both get printed 
+but in dynamic alloaction only constructor get printed, desctrucor get printed after deleting the ptr.
+
+
+________________________________________________________________________________________________________________________________________
+const keyword and creating ojects with it 
+use of it in allocation
+initialization list
+if created object with const keyword it get immutable
+you cant change or modify the values of this object
+
+________________________________________________________________________________________________________________________________________
+											=================Static Keyword:=====================
+** we don't have to craete an object to use static keywords or members.\
+** declared inside the class as static int a; but can't be inititlized inside the class. Must be initialized outisde the class as 
+int ClassName:: a=1;
+**   ::   -> scope resolution operator
+Static member functions are functions that can be called on the class itself, without needing an instance of the class
+Static data members are class-level variables shared among all instances of the class
+They are not tied to any specific object 
+if have static variable a  =2;
+and inside the constructor we are incrementing this variable and if we create 3 objects then it will get incremented 3 times 
+can be accessed as MyClass::staticVarName; or for functions also
+** static fucntions can only static variables and otehr static functins only
+________________________________________________________________________________________________________________________________________
+											========================Static Functions=====================
+** no nedd to create object to call them
+** doesn't have this keyword
+** they can access static members only.
+
+
+
+
+________________________________________________________________________________________________________________________________________
+											=============================Encapsulation:=====================
+
+wraping a data members or functions is called Encapsulation
+
+Fully Encapsulated class:
+	-> a calss in which all the members are private is caled as fully encapsulated class
+advantages:
+	-> Data hidden inside a class instead of setting here and there in the program, security ↑
+ 	-> if we want we can make calss read only by creating objects as const
+	-> code reusabilty
+	-> unit testing 
+
+________________________________________________________________________________________________________________________________________
+										=======================Inheritance:======================
+-> when a child calss inherits the porperties or attrubutes of parent class then the term is called is Inheritance.
+** To inherit multiple class use this syntax:
+			-> class A:public B, public C{
+
+			};
+**Private data members of any class can not be inherited
+** Protected data memebers are kind of private data members with diffrence that they are access
+ible to derived class and also within the same class, where as private data members are accessible within the class only.
+🔴**In C++, even if a variable or function is declared as public in the base class and the inheritance access specifier is also public, you cannot directly call them from within the derived class without being in the context of a member function or constructor. You would need to be within the scope of a member function or constructor of the derived class to access and use the public members of the base class.
+🔴**we cant call functions or cout the variable but we can assign it to other variable without creating new function in derived class
+like int b=a;(a-> variable in base class (public or protected));
+int c=getb();(get b function in base class public or protected and it is returning the value of b);
+
+
+Specifiers and their accessibility
+----------------------------------------------------------------------------------------------------------------
+base class member  |        Public			|     Protected 			|               Private                |
+access specifier   |						|							|									   |
+----------------------------------------------------------------------------------------------------------------
+Public			   |		Public			|	  Protected   			|				Private				   |
+----------------------------------------------------------------------------------------------------------------
+Protected		   |		Protected		|	  Protected				|			    Private    			   |
+----------------------------------------------------------------------------------------------------------------
+Private 		   |	Not accessible		|    Not accessible			|			Not accessible			   |
+----------------------------------------------------------------------------------------------------------------
+
+
+Types of Inheritances:
+
+1) singel -> when single parent class inherits single child class
+2) multi level -> when one child1 inherits the properties of parent and then child2 inherits the properties of child1 means child1 is parent for child 2
+3) multiple
+4) hybrid
+5) hirarchical
+________________
+3)multiple-> in multiple inheritance ther are 2 or more base/parent class and single child class, means single child class is inheriting the properties of multiple base classes
+
+4) hirarchical -> one class serves as parent class for more than one child class
+
+5)Hybrid -> combination of more than one type of inheritance 
+
+
+
+________________________________________________________________________________________________________________________________________
+								==========================🔴Inheritance ambiguity:========================
+if Class B is ingeriting Class A, and both the class have same member function in it fo eg-> print()
+then after calling it with object of child class which class function will call this is called inheritance ambiguity.
+
+** to resolve it we make use of scope resolution operator.
+			-> obj.A::print();   //prints A function
+			   obj.B::print();	// prints B function
+
+________________________________________________________________________________________________________________________________________
+												=================Polymorphism:=======================
+poly-> many
+morph-> forms
+It describes the ability of objects(funtions, constructors) to have or to be displayed in more than one form.
+
+eg->   a son 
+he is son of his parents, brother of his sibling, cosin of his cosin etc.
+ther are 2 types of polymorphism 
+-> compile time
+-> run time
+
+
+
+Compile time polymorphism (Static Binding):
+-> tell in compile time that what entity is existing at what time 
+		-> function overloading 
+		-> operator overloading 
+
+
+Function overloading:
+	-> ability to define multiple methods in the same class with the same name but with different parameters.
+	-> if the return type of function is diffrent but the paremeteres are same then it doesn't work.
+	-> return type doesnot matter in funciton opverlaoding
+
+Operator overloading:feature that lets you redefine the behavior of existing operators for user-defined types (like classes and structs)
+syntax-> returnType operator symbol (arguments);   =>(operator -> keyword, symbols -> +,-,*,/ etc);
+These operators can't be overloaded:
+sizeof
+:: (scope resolution)
+. (member access)
+?: (ternary operator)
+* (member pointer selector)
+
+types of operator overloading:
+=>unary operator overlaoding (operator contains only one operrand or works on only operands oeprand eg: inc and dec operator)
+	-> there are two ways to do it 
+	1) with class function:
+			returnType operator symbol (); // in case of postfix like i++ we have to write the datatype inside the symbol(__);
+	2) with friend function:
+			friend returnType operator symbol (argument); 
+
+=>binary operator overlaoding (an opeartor that contains two operands or works with two operands eg:+,-,* )
+	-> there are two ways to do it 
+	1) with class function:
+			returnType operator symbol (argument); 
+	2) with friend function:
+			friend returnType operator symbol (argument1,argument2); 
+// class A{
+// public:
+// int a=1;
+//  void operator ++(){
+//       a=a+5;
+//  }
+// };
+
+// int main(){
+// A b;
+// ++b;
+
+// cout<<b.a;
+//}
+
+
+
+Run time Polymorphism(Dynamic Binding):
+	-> works only with Inheritance
+	-> it includes:
+		-> method overriding
+			-> method in a derived has the same name, same parameters, and same return type as a method in its base
+			-> signature must be diffrent
+
+
+________________________________________________________________________________________________________________________________________
+												====================Abstraction:==================
+	->implementation hiding
+	->Focus on What, Not How
+	->Levels of Abstraction:
+	->allows us to manage complexity by hiding unnecessary details and focusing on essential features, thus making our code more   
+	  understandable, maintainable, and flexible. 
+	-> can declare teh class abstract with pure virtual fucntion
+
+
+________________________________________________________________________________________________________________________________________
+												====================Friend Function:==================
+
+compiler didn't allow the outside functions to access the private members of  class.
+but if the function is declared friend inside the class then it can access to the private memebers of class.
+** after declearing the function as friend also the function which is outside the class doesnot become the member of that class we can't call directly by creating the object of class
+** not in the scope of the class
+** can be invoked without the need of any objects
+** useally contains the arguments as objects
+** can be declared inside the public and private section of the class
+** can't access the members directly by their name and needs obj.memeber_name to access any memeber 
+syntax-> 1)friend return_type functionName(parameter_list);
+		 2)friend void functionName(ClassA&, ClassB&); // Friend function declaration with class arguments 
+
+
+________________________________________________________________________________________________________________________________________
+												====================pure virtual Function:==================
+C++ doesn't support declaring a class entirely static. However, you can achieve a similar effect by using static members within a class
+in cpp a class declare abstract if it contains at least one pure virtual function
+
+**A pure virtual function in C++ is a function that has no implementation in the base class and must be overridden by any derived class. It is declared by assigning 0 to the function declaration within the class. A class containing at least one pure virtual function is considered an abstract class and cannot be instantiated directly.

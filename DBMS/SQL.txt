@@ -1,0 +1,106 @@
+-> to make column not null:
+ALTER TABLE employees MODIFY email VARCHAR(255) NOT NULL;
+
+->add new column to existing table:
+alter table employee add email varchar(255);
+
+->to change the data type of any column:
+alter table employee modify column department varchar(200);
+
+-> to drop any column from table:
+alter table employee drop column column_name;
+
+------------------------------------------------------------------
+=> wildcards in SQL
+
+-> employee name start with 'a':
+select * from employee where name like "a%";
+
+->employee name ends with ‘e’:
+ select * from employee where name like "%e";
+
+->employee name contains “a” in second position:
+select * from employee where name like "_a%";
+
+-> employee name has second last character as “s”;
+select * from employee where name like "%s_";
+
+-> first letter a and length must be 2:
+select * from employee where name like "a_%";
+
+-> must contain a any where in the name:
+select * from employee where name like "%a%";
+
+-> a at first and y at last:
+select * from employee where name like "a%y";
+
+-> employee has name of length n:
+	SELECT *
+	FROM employee
+	WHERE LENGTH(name) = n;
+
+-> remove constraint from table:
+alter table table_name drop constraint constraint_name;
+
+-> find the average salary department wise:
+ select id , avg(salary) from em1 group by id order by id;
+
+---------------------------------------------------------------------------------------------------------------------------------
+=> print the total salary with every row (Window Function):
+ select name, sum(salary) over() as "total Salary" from em1;
+
+=> rank the rows based on salary:
+ select name, id, department, salary, rank() over(order by salary desc) as "Salary rank" from em1;
+			-> it will now not give result in sequence, but skips ranks for ties in gaps and after 1,1 gives 3 not 2
+=> same above with dense rank():
+select name, id, department, salary, dense_rank() over(order by salary desc) as " Dense Salary rank" from em1;
+			-> output like 1,1 then 2 then 3,3 then 4....
+
+
+=> provide rank based on department based partition based on salary:
+select name, id, department, salary, rank() over( partition by department order by salary desc) as "Salary rank"
+from em1;
+-------------------------------------------------------------------------------------------------------------------------------------
+
+=> Select 2nd max Salry from employee:
+ 1) select max(salary) from employee where salary <>(select max(salary) from employee);
+ 2) select  distinct(salary), name, id, department from em1 order by salary desc limit 2,1;
+
+=> find nth highest slaray:
+ 1) select * from employee e1  where n-1 =(select count(distinct(salary)) from employee e2 where e2.salary>e1.salary); (without using top or limit keyword)
+ 2) select  distinct(salary), name, id, department from em1 order by salary desc limit n-1,1;
+
+=> do not show duplicates:
+select distinct * from employee;
+
+=> remove duplicates by creating new table :
+create table newemp1 as select distinct id, name, department, salary from emp1;
+
+=> remove duplicate 
+ 1) delete from em1 where rowid not in(select min(rowid) from em1 group by department) ; =====> oracle only
+ 2)  select id, name, department, salary from em1 group by id, name, department, salary having count(*) >1; ==> duplicate records in all fields.
+ 3)  select id, count(id) from em1 group by id having count(id)>1; ===> only one duplicate field
+ 1) SELECT name, id, salary, department, CASE WHEN id % 2 = 0 THEN 'Even' ELSE 'Odd' END AS odd_even_marker FROM em1; ===>  on odd even marker column it will print the type of column in string format (Odd, Even)
+ 
+
+=> odd and even records:
+ 1) with rownum in oracle
+ 2) select * from em1 where id%2=0 ==> even  and if id%2=1 odd
+
+
+=> find the first and the last record from the table:
+ 1)  select * from em1 where id=(select max(id) from em1) ; => or min 
+
+=> copy rows from table:
+ 1) copy only schema not the records :
+	create table sample as select * from em1 where 3=4;  =>> or any false condition
+
+
+=> last 3 records from table:
+ 1)  select * from (select * from em1 order by id desc limit 3) temp  order by id asc; ==> here tamp is cursor
+
+
+=> employee working in same department:
+ 1) select distinct e.name, e.salary, e.department from em1 e inner join em1 e2 on e2.department = e.department and e2.name<> e.name;
+
+

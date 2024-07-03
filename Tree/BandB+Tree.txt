@@ -1,0 +1,65 @@
+B-Tree
+Definition:
+A B-Tree is a self-balancing search tree that is used in databases and file systems to efficiently store and manage large amounts of data. It ensures that data is sorted and that operations such as search, insert, delete, and sequential access are efficient.
+
+Properties:
+
+Node Structure: Each node contains a certain number of keys and pointers to child blocks.
+Format: [bp1] [key] [bp2] [key] ... [bp(n)]
+bp stands for block pointer (points to children nodes; points to NULL in leaf nodes).
+Balanced: All leaf nodes are at the same depth.
+Order (m): A B-Tree of order m allows each node to have a maximum of m children and a minimum of ⌈m/2⌉ children (except the root, which can have fewer).
+No Redundant Keys: Each key appears only once in the tree.
+Operations:
+
+Search: Similar to binary search within nodes.
+Insertion and Deletion: Ensures the tree remains balanced by splitting or merging nodes as necessary.
+Example Structure:
+        [30]
+       /   \
+  [10, 20]  [40, 50]
+
+Values less than the root node value are on the left side.
+Values greater than the root node value are on the right side.
+Leaf nodes are not linked together like a linked list.
+
+
+B+ Tree
+Definition:
+A B+ Tree is an extension of the B-Tree that is used for efficient indexing and retrieval in databases and file systems. It improves upon the B-Tree by storing all values in the leaf nodes and linking the leaf nodes for faster sequential access.
+
+Properties:
+
+Node Structure: Internal nodes contain only keys and pointers to child nodes. Leaf nodes contain all the actual data (or pointers to data).
+Internal Nodes: Only contain keys and pointers to child nodes.
+Leaf Nodes: Contain keys and data pointers; no block or children pointers (do not point to NULL).
+Redundant Keys: Keys may be duplicated in internal nodes to maintain tree properties.
+Operations:
+
+Search: More efficient because all data is found in the leaf nodes.
+Insertion and Deletion: Maintains balance by splitting or merging nodes and ensures all data remains in the leaf nodes.
+Example Structure:
+Internal Nodes:   [20, 30]
+                 /     |     \
+Leaf Nodes:  [10]  [20, 30]  [40]
+
+Values less than the root node value are on the left side.
+Values greater than or equal to the root node value are on the right side.
+Leaf nodes are linked together like a linked list, making sequential access more efficient.
+
+
+
+********************
+Key Differences
+Data Storage:
+
+B-Tree: Keys and data pointers are distributed throughout the entire tree.
+B+ Tree: All data pointers are stored only in the leaf nodes.
+Node Structure:
+
+B-Tree: Keys and data pointers are present at all levels (root, internal, and leaf nodes).
+B+ Tree: Internal nodes contain only keys; leaf nodes contain keys and data pointers.
+Efficiency:
+
+B-Tree: Search operations can be less efficient because data pointers can be found at any level.
+B+ Tree: More efficient for search and sequential access because all data is in the leaf nodes, and leaf nodes are linked.

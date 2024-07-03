@@ -1,0 +1,7 @@
+element vs tags:
+In HTML, an element is the fundamental building block and consists of a start tag, content, and an end tag. For example, <p>Hello World!</p> is a paragraph element.
+
+A tag, on the other hand, is used to create an HTML element and can either be a start tag (<p>) or an end tag (</p>). Tags are the markers that define the beginning and end of an element.
+
+
+

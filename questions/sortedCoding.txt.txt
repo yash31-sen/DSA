@@ -1,0 +1,135 @@
+Machine Learning
+----------------
+✔️Different types of learning in ML (77)
+📌What is clustering (78)
+✔️Formula for Bayes Theorem and naive bayes algorithm(79)
+explain bagging 
+✔️explain decision tree and random forest 
+✔️explain variance and bias 
+✔️confusion matrix
+📌How ML and DL are related (80)
+📌what is genAi and how it will use in tcs and its types 
+📌Reggresion 
+____________________________________________________________________________
+Programming and Algorithms
+--------------------------
+✔️error vs exceptions :Errors are serious issues that typically reflect problems with the underlying system or environment in which a    
+                program is running. They are generally beyond the control of the application and cannot be reasonably handled.
+✔️composite numbers: a positive number that can be found by multiplying 2 +ve numbers other than one
+compression algorithm↓ 
+krushkal,prims, Dijaskstras, floyed warshal's, BFS, DFS
+Final Variables , method and class
+Convert binary to decimal vice-versa (7)
+Synchronization keywords (17)
+✔️Fetch in JS (19)
+✔️subarrays having sum equal to k;
+✔️Permutations of string (in-built method and recursion) (9)
+✔️Merge 2 sorted arrays (16)
+✔️Find square root of a number (32)
+✔️number of occurrence of a particular character in a string (33)
+✔️Sort arrays containing 0, 1, and 2 (34)
+✔️Maximum product subarray (Kadane's algorithm) (35)
+✔️Find the element that appears once in an array where every other element appears twice (36)
+✔️Loop in linked list / find the middle of linked list (37)
+✔️Reverse a linked list (38)
+✔️Stack and queue using array (39)
+✔️Find the next greater element (40)
+✔️Reverse the words in a string (41)
+✔️Convert matrix into lowsssssssser triangular matrix (56)
+✔️Factorial of a number (57)
+✔️Number of pairs whose average is present in array (58)
+✔️Unique paths in a grid (59) [you can only rightwards or downwards]
+✔️Minimum and maximum element in every contiguous subarray (60)
+✔️Rotate array by k elements (61)
+✔️Leap year or not (62)
+✔️Write code to divide and multiply a number with 2 without using arithmetic operator (72)
+✔️Doubly linked list and delete node (73)
+✔️Find the word in the given sentence (84)
+______________________________________________________________________
+Databases
+---------
+✔️limit and offset in sql
+If a transaction gets failed then how the properties in the database will act upon it (8)
+What is database partitioning (29)
+Difference between rownum and rowid (66)
+What happens if we delete the row containing foreign key (67)
+Cascading in SQL (68)
+Person name with less than 10 marks for given section ID (62)
+if attacker perform an SQL injection in your database then how will you tackle this
+___________________________________________________________________________________
+Data Structures
+---------------
+✔️binnary tree
+AVL tree (21)
+Complete Binary Tree (22)
+B and B+ tree (18)
+__________________________________________________________________________________
+Networking and Cloud Computing
+------------------------------
+what is CDN
+What are data centers (23)
+✔️Public, private, hybrid, and community cloud (24)
+How Apache works (12)
+OSI model (26, 74)
+Firewall (27)
+DNS (28)
+✔️How will you identify the person in the network (69): with ip address, MAC, credentials, network logs 
+✔️Are IP addresses for websites in the same region can be the same (70):No
+Cloud Computing Architecture
+____________________________________________________________________________________
+Web Development
+---------------
+DOM in HTML (3)
+Why HTML is a markup language (10)
+Difference between HTML and PHP (11)
+CSS priority (13)
+Rare HTML tags (48)
+Event handlers in JS (50)
+How to combine frontend and backend codes (52)
+What is React prop, render (53)
+_____________________________________________________________________________________
+Computer Science Fundamentals
+-----------------------------
+
+testing tools used in project
+Authentication and authorization (1)
+Abstract class and its use (2)
+What is API (4)
+What is big data (5)
+malloc, calloc, and new (6)
+3-tier architecture of application (20)
+Intrusion detection system (76)
+Namespace in C++ (81)
+Python serialization (82)
+vlock in python 
+IPC mechanism in python => interprocess communication 
+PEB 8
+modular and non modular scope in python (modular means local scope and non modular means global scope)
+unit test in python 
+run python code in unix environment => first of all check if it is present in the system or not, then go to that directory and then run python filename.py
+Can you see .pyc in Python (83)
+What is the current version of MySQL (82)
+How to take input in NQT exam (81)
+Operating Systems
+Multithreading (43, 84)
+Kernel (44)
+Cryptography and Security
+How to encrypt data while sending to database (51)
+Computer Networks
+OSI model (26)
+Firewall (27)
+DNS (28)
+Miscellaneous
+Create your own coding question with loops (64)
+What are ledgers and its types in blockchain (65)
+Event handlers in JS (50)
+Can function replace OOP (49)
+____________________________________________________________________________________________________________________________________________________________________________________________
+Project:
+about project 
+why created 
+tech stack 
+testing in  project 
+problem faced 
+leadership
+

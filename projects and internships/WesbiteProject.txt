@@ -1,0 +1,16 @@
+College Management System:
+It is an web application, that provides user authentication and autherization features, profile management, adding courses, students, staff etc.
+Technology used: HTML5, CSS3, NodeJs, MYSQL;
+1)MYSQL:
+Database Structure:
+1) User Table: stores information about users(admins, students, staff); user id from here will be used to get 
+2)Why mysql not mongodb and other db
+Structured Data: MySQL is a relational database that is well-suited for structured data with clear relationships, such as the data model of students, staff, courses, and departments in my project.
+3)can you use nomralization in your project
+4)on delete CASCADE
+5)Testing of project:
+1)unit Testing
+2)integration Testing(trestin rest apis before integration and after integration)
+3)Functional Testing:end to end Testing
+4)Database testing
+5)User Acceptance testing

@@ -1,0 +1,12 @@
+With Cisco Virtual Internship I got the knwoledge of working with python, how to apply python in real world problme solving tasks.
+Solving problems given as a task of Internship will lead to the great understanding of python and its usecases
+-> one problem that they given us is to find if the ip address is private or not 
+    convert ip addresses to binary, octal and hexadecimal.
+-> other tasks involve various tests on python and small projects 
+-> one group project that is hand gesture based recognition system 
+Q) what non technicla skills did you get from the Internship
+-> it improve my time management, as there are many tasks that i have to complete within the given time frame. And along with this I also have to manage my college studies as well
+Q)what do you think about virtual format of Internship?
+-> virtual format of internship is great, as the internship is virutal it become easy for me to handle internship tasks as well teh colleg tasks together. Also Virtual format requires a good communication skills that also i imporve during the Internship
+Q) how you manage time and taks during the internship?
+->setting clear golas and timelines for both regular tasks and internship tasks and prioritizing the things 
