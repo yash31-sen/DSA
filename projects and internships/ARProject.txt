@@ -47,8 +47,8 @@ ________________________________________________________________________________
 eg: Pokemon go
 4) VR: Virtual Reality places us in a completely virtual world, make use of VR headset(Oculus, Jio) etc.
 eg: VR games etc.
-
-
+5)MR: Mixed Reality combination of AR and VR (real world and digital elements)
+eg: microsoft hololense(hologram).
 ______________________________________________________________________________________________________________________________________
 Testing of application:
 1)Unit: test individual components and functions of you c# script 
