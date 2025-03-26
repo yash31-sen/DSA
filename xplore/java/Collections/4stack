@@ -1,0 +1,12 @@
+it extends vector
+
+.push();
+.pop()
+.peek();//element at top
+isEmpty()
+size();
+.search(element)//give index by searching from top start indexing from 1
+as it extends vector all methiods of vector works here
+
+
+we can also use linkedlist like a stack by addlast removelast and all

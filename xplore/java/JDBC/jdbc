@@ -1,0 +1,75 @@
+JDBC-> java database connectivitiy
+
+api to connect interact with the database in java
+with the help of jdbc drivers
+
+drivers:
+JDBC-ODC-> old written in c, scalability and performance issue
+NAtive Api driver -> vendpr specific
+Network protocol driver -> middle ware needed 
+Type 4:Thin driver -> best for now, directly converrts native api calls to database calls , most efficient 
+
+
+JDBC components:
+1)Driver manager class
+    -> used to connect to the database 
+    -> has method .getConnection(); // which helps in connecting tothe database, requires 3 things url, username and password 
+2)Connection interface
+    -> we need an instance to store the conection of database and the instance if of this interface 
+3)Statement and preparedstatement interface
+    -> to run sql queries in java statement interface is used 
+    -> more advanced version is prepared statment 
+    -> does it with the help of .createStatement(); //available in the instance of connection interface 
+4)result interface 
+    -> the data or table that we got from database or sql query is stored in the instance of this interface    
+    and operations on that table performs 
+
+=> only driver manager is class rest 3 are i terfaces 
+
+
+for setting up jdbc we need 3 things
+mysql , java ide , and sql connector (eg: connector/j)
+
+
+=> class to laod driver
+Class.forName("com.mysql.cj.jdbc.Driver");  // may throw classNotFoundException (import java.sql.*;)
+handle the excception and print like that:
+e.printStackTrace(); //prints from where the code get exception and till where it runs,  we can simply use sout also
+
+
+=> Connection connection= DriverManager.getConnection(url, username, password); // may throw SQLEXCEPTION
+=> Statement statment= conection.createStatement();
+=>ResultSet resultset=statement.executeQuery(query);// it holds the result of query, any operation on the result will perform with it
+=>resultset.next();// return true or false, used in iterating over the result  
+=> int id=resultSet.getInt("id");, Stirng name=resultSet.getString("name");
+
+
+// to insert:
+String qry=String.formate("Insert into students (name, age, marks) values('%s', $o, %f)","vinit", 23,78.5);
+
+int affectedRows=statement.executeUpdate(qry);
+int affectedRows=statement.executeUpdate(qry);//for insert and update
+
+
+=> in prepared statements we does not hard code the values , we just put ?(called placeholders) where we have to put our values 
+
+String qry="Insert into students(name, age, marks) values(?, ?, ?)";
+
+PreparedStatement preparedStatement =connection.preparedStatement(qry);
+preparedStatement.setString(1,"Anikit");//set valus according to the index of columns or fields ,can be updown but sequence of index must be same
+preparedStatement.setInt(2,25);
+preparedStatement.setDouble(3,85);
+
+int rowAffected=preparedStatement.executeQuery();//no need to pass query there, it is already compiled in previous statement  
+
+=> rest same as Statement for insert update delete 
+
+=>statement.addBatch(query); //adds multiple queries to the batch
+
+int[] arr= rowsAffected=statement.executeBatch();// if 1st query from batch successfully executed then add 1 to array, if 2nd also so again add 1 to array in or wor affected cnt to array in all case , if not executed then 0 
+
+
+Transaction handling in jdbc:
+commit is by defualt true in java
+connection.setAutoCommit(false);
+connection.roolback();

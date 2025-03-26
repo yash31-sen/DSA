@@ -1,0 +1,48 @@
+Java Exceptions:
+An Exceptions is an unexpected event that occures during the program execution. It affects teh flow of program instruction which can caouse the program to terminate abnormally.
+
+
+Exceptions can occure due to so many reasons like:
+1)Invalid user input
+2)device failure
+3)loss of network connection
+4)physical limitaion 
+5)code err
+6)opening the fiule that does not exists
+
+
+types:
+1)runtime Exceptions=> occures due to programming erros
+Note: if it is runtime exceptipn then it is your fault 
+eg:
+null pointer access(missing the initialization of variable)
+null pointer
+out of bound array index(ArrayIndexOutOfBound)
+divide by 0(Arithmatic Exceptions)
+
+2)JAVA IO Exceptions=>also called as checked Exceptions, they are checked during compile time 
+eg:
+trying to open afile that does not exists(FileNotFoundException)
+trying to read past the end of file 
+
+
+we can use finally after try as well without catch 
+on err in code in try block it will first execute finally block and then give errr
+finally can be used only once
+
+=>there are some cases where finally block dies nit executes
+)when you write system.exit() method
+)an exxception occure in finally block
+)the death of an thread
+
+
+
+Throws=> when you want to tell others that perticular function may throw an error
+eg:
+static int add() throws ArithmaticException{
+    
+}
+
+
+Throw keyword used to throw exceptipn explicitly.
+with this keyword we can throw already existing exceptions as well as we can throw custom made exceptions

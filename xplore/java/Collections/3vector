@@ -1,0 +1,19 @@
+it is also an part of list 
+it is available before the collection framework after the collection it is part of it 
+it is synchronized means thread safe unlike arraylist and linkedlist (means of 2 people try to add the value to same vector at a same time then they wont be able to do it )
+
+in arraylist capacity incremetned by 1.5 on adding elmeent more than its capacity but in vector it get incemented by 2, we can give that increment as well but by default it is 2
+it is legacy class
+
+syntax:=> 
+Vector<Integer> v=new Vector<>();
+Vector(int initialCapacity,int capacityIncrement);
+v.add();
+v.capacity()
+v.set(inde,val);
+v.get(index);
+v.remove(inds/object);
+v.size();
+v.isEmpty();
+v.contains();
+v.clear();

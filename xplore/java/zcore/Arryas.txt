@@ -1,0 +1,4 @@
+1)int[] a=new int[size];
+2)Arrays.sort(arr);
+3)for removing duplicated from array check if it is equal to the i+1 and not equal to i-1;
+4)arr.split(" "); very usefull with string 

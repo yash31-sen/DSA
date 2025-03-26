@@ -1,0 +1,7 @@
+1)String.format("%.3f", num);
+DecimalFormat df = new DecimalFormat("#.00");
+double rounded = Math.round(num * 100.0) / 100.0;
+2)String to int=> int n=(int)<String_type_variable>;,  int num = Integer.parseInt(str);
+3)String s=Integer.toString(num);,
+4)import java.math.BigInteger
+BigInteger.ZERO, BigInteger.ONE 

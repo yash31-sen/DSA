@@ -1,0 +1,180 @@
+map is seperate interface it does not extends collections
+
+map is an interface it has multiple implementations some follows the order some not      
+
+if key not present in hashmap it return null
+
+unordered
+onlyone key can be null, if try to assign more than one key to null it will replace the data
+not synchronized
+
+
+map.containsKey(K);
+map.containsValue(V);
+map.put(k,v);
+map.remove(K);
+map.remove(k,v);
+map.getOrDefailt(k,<DeafaultValue>); // if key present then return tht result else return the default value 
+constant time complexity for basic opeartions like get put remove etc O(1)
+map.putIfAbsent(k,v); // add only if not already present
+
+for(int i: map.keySet()){
+    System.out.println(i+" "+ map.get(i));
+}
+
+for(Map.Entry<Integer,String> i: map.entrySet()){
+    System.out.println(i.getKey());
+    System.out.println(i.getValue());
+}
+
+
+
+=> internal structure of hashmap:
+1)key,
+2)value
+3)bucket:-> a place where key value pairs are stored.  Think of bucket as a cells of list(array);
+4)HashFunction: Key goes to HashFunction and then one index came out from bucket 
+gives hashcode
+fixed sized op regradless of size of input (32,64 bit);
+efficient computation 
+
+
+=> how hashmap searches the key:
+1)hashing the key
+2)finding the index
+3)serching the bucket
+
+
+
+______________________________________________________________
+2)LinkedHashMap:
+extends hashmap
+maintains order 
+not thread safe
+the order in which insertion is done is maintained in the Map
+it has doubly linked list that maintains the order of pairs
+bit slow in comparison to hashmap 
+more memory
+
+it has intial  capacirt , load order and accesoder
+accesoder: by defualt false // if false then intems stored in insertion order 
+IF WE make it true then the element that is accessed is set to the end   
+usefull to know te least recently used element
+
+
+______________________________________________________________
+3)WeakHashMap:
+if we have a strong reference to any object or anything then garbage collectiond does not call for it 
+for weak reference it get removed if not in use    
+
+Class obbj= new Class(); //strong reference
+WeakReference<Phone> phoneWeakReference = new WeakReference<>(new "apple", "16proomx"); //weak reference 
+syntax:
+WeakHashMap<Integer,String> wmap=new WeakHashMap<>();
+
+
+
+______________________________________________________________
+
+4) IdentityHashMap:
+IdentityHashMap in Java is a map implementation that uses reference equality ( == ) instead of object equality ( equals() ) for comparing keys, meaning two keys are considered equal only if they are the exact same object instance. 
+eg:
+String k1=new String("key1");
+String k2new String("key1");
+Map<Integer,String> map=new IdentityHashMap<>();
+map.put(k1,"1");
+map.put(k2,"2");
+
+output:
+k1 "1"
+K2 "2"
+
+but in normal map it is k2:2
+it checs reference memory address not the value and we are making string with new keyword so the reference memory address is different 
+______________________________________________________________
+
+5) sorted map:
+interface exetnds map
+if we have to sort based on keys then we use this 
+key can't be null
+syntax:
+SortedMap<Integer,String> smap=new TreeMap<>();
+SortedMap<Integer,String> smap=new TreeMap<>((a,b)-> b-a);
+map.firstKEy();
+map.lastKey();
+map.headMap(91);; data from start to key number 91 //last key excludes
+map.tailMap(77); data from 77 to tail
+map.subMap(from where ,to where );
+
+
+______________________________________________________________
+
+6) Navigable Map:
+NavigableMap<Integer,String> nmap=new TreeMap<>();
+has some extra methods:
+nmap.lowerKey(4); print value strictly less than 4 only one
+nmap.ceilingKey(3); key greater and equal to 3
+nmap.higherKey(4);
+nmap.decendingMap();
+
+
+______________________________________________________________
+
+HashTable:
+implements hashmap
+it is synchronized
+no null keys and also values 
+concurrent hashmap
+
+
+
+______________________________________________________________
+
+7)Concurrent hashmap
+
+ConcurrentHashMap<String, Integer> map=new ConcurrentHashMap<>();//true
+Map<String, Integer> map=new ConcurrentHashMap<>();//ture//ture
+ConcurrentMap<String, Integer> map=new ConcurrentHashMap<>();//ture
+extends map
+
+
+______________________________________________________________
+Imnmutable map:
+map whose content we can't modify ones it is instantiated
+
+
+Map<String,Integer> map=new HashMap<>();
+
+map.put("A",20);
+map.put("B",30);
+map.put("C",30);
+
+Map<String,Integer> map1=Collections.unmodifiableMap(map);// return an unmodifiable map, if try to modify or add value  give an exception (UnsupportedOperationException);
+
+
+Map<String,Integer> map3=MAp.of("A",1,"B",2,"C",3);;  but has limitation that it can only accept 10 pairs
+Map<String,Integer> map4=MAp.ofEntries(Map.entry("A",1),Map.entry("B",1));;  can have any number of entires 
+
+
+
+______________________________________________________________
+
+8)Enum Map:
+
+
+when the keys are known inn advance it is used
+Map<Day,String> map=new EnumMap<>(Day.class);
+
+.ordinal(); index,
+
+work with indexes
+
+______________________________________________________________
+9) ConcurrentSkipListMap:
+If we want map that is synchronized as well as sorted then this is it 
+
+uses skip list 
+
+thread safe tree map( akind of sorted linked list )
+
+extends concurrentNAvigableMap

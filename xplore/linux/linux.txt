@@ -1,0 +1,642 @@
+Linux: 
+command syntax: command options and arguments 
+
+key combination for navigation:
+ctrl+A-> move to the beginning of file 
+ctrl+E-> end of file 
+ctrl+left arrow-> left of one word 
+ctrl+U-> remove from cursor to start
+ctrl+k-> remove from cursor to end
+ctrl+y-> paste copied text
+ctrl+r-. to search cmd
+
+
+in man cmd press q to quit 
+man cmd name 
+
+To help you look up a command by its description rather than its name, you can use: apropos
+
+
+files and folders:
+file filename.txt-> determines the file type
+
+stat filename.txt-> display the ownership of the file 
+
+ls --colors=always
+
+mkdir -p department/legal/contracts :-> here legalwill become the parent folder of contracts 
+
+rmdir foldername or path :-> remove only empty folder 
+rem filename -> remove file 
+cp oldfile newfile 
+
+if a folder name has space in between like (emp info) so give path like that-> department/hr/emp\<space>info
+
+mv -> this cmd can be used to move file from one directory to other directory and to rename the file also
+
+eg-> mv oldloationOfFile newLocationOffile
+mv oldname newname
+
+wildcards -> * all characters 
+	? any one character 
+eg-> mv *.txt department/marketing :-> all the files will move to the marketing folder inside department (with extention of .txt)
+
+mv department/marketing/* .
+all the files from marketing folder will move to the present folder 
+
+
+rm poem?.txt -> remove all the file start with name poem with any one character after that 
+
+find cmd-> find <scope where want to search > -name "filename";
+file name can be f2.txt/"poe*.txt" etc;
+can also find folders 
+file 	~/Document/ -name "*d"
+give complete path 
+
+User roles
+Normal user: modify their own files, cannot make system changes
+Superuser (root): modify any file, make system changes
+
+/ ->/root is the highest level of file structure -> need super user permission 
+home -> stores users home folder
+etc-> configuration files 
+bin and sbin -> stores binaries (programs)
+lib-> libraries and shared modules 
+dev -> represents devices on system (cpu etc)
+mnt-> where local and remote file system mounted	 
+media -> removable storages is mounted 
+proc->virtual filesystem representing processes
+sys->virtual filesystem representing kernel values
+	
+
+
+
+          Read (r)     Write (w)      Execute (x)  Result
+User (u)   +            +              +             u+rwx
+Group (g)  =             -             -              g=r
+Others (o) -              -          -                o-rwx
+All (a)
+
++ add permissions, - removes permissions, = add permissions but remove for others 
+a means all 	user group and others
+r=4, w=2, x=1
+
+chown -> change ownership 
+
+links-> a file that acts as a reference to another file 
+hard links -> point to data on disk nodes(inode)
+soft links (symbolic link) file in disk(relative path)
+cmd-> ln -s f1.txt f2.txt
+now here -> f2.txt is linked to f1.txt 
+on cat f2.txt f1 content shows but when f1 got removed or deleted f2 won't be able to show the content of f1, this is soft copy
+we can create a hard link by just removing the -s from the soft link cmd	
+
+
+pipes -> used to connect commands together
+take the output of one cmd and send it to another 
+eg-> echo hello | wc
+
+head -> first 10 line or head -n5 poem.txt (first 5 lines)
+same with tail
+
+cat -n will also  print the numbers in the line 	
+order mattes in pipe
+
+less poem.txt-> shows content with some movable options 
+
+
+grep-> used to find the  text in files and streams
+eg-> grep "the" f1.txt
+highlights the in f1's content 
+shows only those lines that contains the in it 
+it is case sensitive 
+grep -i "the" f1.txt -> now it becomes case insensitive 
+grep -E "\w{6,}" f1.txt -> used to find the words with 6 or more character in the file 	
+
+
+
+
+awk and sed -> used to programmatically manipulate text in streams or files 
+eg->awk '{print $2}' f1.txt -> if there is table in file and has 3 column then it will print the 2nd column 
+awk '{print $2 "\t" $1}' f1.txt -> \t for tab
+awk '{print $2 "\t" $1}' f1.txt | sort -n- > it also sorts th data 
+
+sed is helpful for changing data 
+sed "s/Orange/Red/" f1.txt -> here every orange in the file get changed to red, s is substitute 
+
+sort -> sorts the data as per first column 
+sort -k2 f1.txt //sort based on 2nd field (first character of 2nd field )
+sort -k2 -n f1.txt  -> sorts the data by taking whole column value 
+
+
+
+vim-> sudo at install vim
+modes-> insertion mode and cmd mode(save search etc) 
+i-> to insertion mode
+esc-> cmd mode
+shift+i -> starting of file insert
+:w f1.txt
+:wq -> save and quit
+0-> quick edit to text 
+!q:-> exit without saving
+:q!-> quit vim
+shift +g -> bottom of file 
+1+shift+g-> top of file 
+move by sentence -> (,)
+move by paragraph -> {,}
+
+
+
+nano-> ctr + a-> beginning of file 
+ctrl+e-> end of file 
+ctrl + o-> to save the file
+ctrl+x->exit
+ctrl+w ->search word (pres enter to go to next match word)
+ctrl+v-> down screen
+ctrl+y-> up screen
+
+
+
+Tar and Zip archives:
+Tar-> a common way to package  and distribute a software and data 
+compression formats -> tar.gz, 	.tgz, .tar.bz2
+
+tar cvf myfiles.tar /Exercise/Files
+cvf: c->create an archive
+v-> tell tar to be verbose(i.e to list out each file to get added to archive) 
+f-> tells tar to output the archive to the file 
+tar caf myfiles.tar.gz Exercise/Files /////compress the file 
+a-> tells tar that what kind of compression to use based on the file extension 
+
+tar xf myfiles.tar.bz2 //////extract the zip
+tar xf myfiles.tar.bz2 -c <folder path to extract>
+-c  :-> specifies the directory to change to extract the archive 
+
+
+
+zip filename.zip <path of folder to zip> ///// it will create an empty zio to get content of folder as well in the zip use this
+zip -r filename.zip <path of folder to zip>
+
+ls > file1.txt 
+get all the files and folders name of that directory in it 
+"someone">> file1.txt ///// append
+
+
+Stream    			Number		Usage
+
+Standard input (stdin)		0		Text input
+Standard output (stdout)	1		Normal text output
+Standard error (stderr)		2		Error text
+ls &>> appends both standard error and standard output to the file
+ls 1>f1.txt
+ls notreal 2>f2.txt //// if notreal is not there then it will not show any error because of 2 
+
+
+
+to check where does the cmd store
+use 
+which cmdname
+
+free -h -> memory info
+cat /proccpuinfo -> cpu information 
+df -h
+
+sudo du /-hd1
+how many storage every folder takes 
+
+
+-----------------------------------------------------------------
+Shell and Process:
+There are 2 types of variables:
+Environment variables->variables that are defined for current shell and are inherited by child shells 
+Shell variable->contained exclusively within the shell in which they are defined 
+
+to see the env variable cmd-> printenv
+convert shell variable into an environmental variable :-> export VAR
+to unset it as environmental variable :-> export -n VAR	
+to unset shell variable :-> unset VAR
+
+to view all shell options:-> set -o
+to unset any shell option us :-> set +o posx(name)
+
+when we login to Linux bash execute :
+/etc/profile 		↔
+	↓		| system environment variables 
+/etc/profile.d/*sh	↔
+	↓
+~/.bash_profile		| user environment ad shell variables 	
+
+-/.bashrc		| Executes /etc/ bashrc
+/etc/bashrc		| Systemwide aliases and shell functions
+-/.bashrc		| User aliases and shell functions
+
+Pathname Expansion
+Shortcut		Table Title
+.. 			Parent directory
+.			Current directory
+~			User's home directory
+-			Previous directory
+
+
+
+history: gives some set of previous cmds
+to run let say 17 cmd from history use !17
+
+if we use recent cmd : ls /var/log
+so just next cmd if we want to enter the /var/log directory then we don't have to type cd /var/log just type cd !*
+
+export HISTIGNORE??????
+
+
+file?.txt -> file1.txt, filea.txt......
+file??.txt -> file11.txt, fileee.txt
+?.jpg -> 1.jpg, g.jpg
+file[0-9].jpg	
+file[a-z].jpg
+file[abc123].jpg
+file[-0-9].txt -> file-.txt, file1.txt
+matches one character of a certain type
+Class			Match
+[:digit:]		Numbers
+[:upper:]		Upper case characters
+[:lower:]		Lower case characters
+[:alpha:]		Upper and lower case
+[:alnum:]		Upper and lower case plus numbers
+[:space:]		Spaces, tabs, and newlines
+
+[:graph:]		Printable characters, not including spaces
+[:print:]		Printable characters, including spaces
+[:punct:]		Punctuation
+[:cntrl:]		Nonprintable control characters
+[:xdigit:]		Hexadecimal characters
+
+
+
+
+extended globs (+)
+file+(abc).txt -> file<anyTimesABCOccurence)
+
+!(+(match)*+(match)) group matches
+Pattern						Match
+ls !(+(photo|file)*+(.jpgl.gif))		All files that do not havephoto or file and 						don't end with jpg or gif.
+
+
+By adding ignorespaces to the HISTCONTROL variable it allows us to precede any command by a space to keep it from recording it in our history file.
+
+
+
+Named and un named pipes:
+NamedPipes: create mkfifo <pipename>
+if we crate a namedpipe in one terminal then it is accessible in other terminals as well
+on ls -l cmd it shows p in the first place
+Unnamed pipes: not possible in this, can be used within in the terminal only 
+
+
+
+tee cmd: used to read from standard input (stdin) and write to both standard output (stdout) and one or more files simultaneously.
+It allows you to view the output of a command while also saving it to a file.
+-a -> append else overwrite the content of file 	
+
+	
+**place directories to directory stack : pushd
+
+ps cmd: shows the process running in the system with pid tty time cmd
+to display every process ps -e
+ps -eH  ->
+to get full information about process: ps -ef
+
+if want more information use : ps -eF
+gives mem, total running time , cpu etc
+ps -elF-> gives 17 columns
+ps e - -format uid,pid, - -sort %cpu
+
+ps -C <programName>  (or with --formate and all)
+
+top cmd: shows process in real time, overall cpu usage, memory usage, how long the cpu is running and many thing
+
+
+kill cmd:
+kill -l
+kill pid -> it will kill the process
+pidof <program name>  -> to get the process it
+sudo killall crand -> kill all the processes
+
+
+priority of pricess:
+higher the nice level lower the property 
+lower the nice level higher the priority 
+
+
+jobs in Linux:
+onetime jobs and reoccurring jobs
+
+one time jobs uses the service called at <time format>
+supports a wide variety of times (4:00pm, 16:00, teatime, midnight etc with date as well)
+
+These are tasks or commands scheduled to execute once at a specific time and do not repeat.
+echo "backup.sh" | at 2pm tomorrow
+
+
+Recurring jobs:These are tasks or commands scheduled to run repeatedly at regular intervals.
+
+Tool Used: cron or crontab.
+types of corn jobs:
+user corn jobs and system corn jobs
+user corn jobs-> specific to user 
+managed by user
+stored in /var/spool/corn/<user>
+
+system corn jobs-> system wide, managed by root,  stored in /etc/corn.d 
+
+crontab -e
+45 23 * * 6 <cmd>
+
+45 means every 45 minute of hour, it can [1-10] (rage), 10,25,23 (multiple), */10(every 10 minutes), 1-59/2(every odd min)
+23-> hour of the day 
+* -> every day in a month (valid values are 1-31)
+* -> month of the year (valid values are 1-12, jan- dec)
+6-> day of the week (0[sunday]-6 [saterday] )
+
+
+limit access to ar and corn jobs -> 	
+/etc/at.deny
+/etc/corn.deny
+Access File	State	Effect
+/etc/at.deny	Exists and empty	Nobody is denied access to at.
+/etc/at.deny	Exists and usernames present	Listed users are denied access to at.
+/etc/at.allow	Exists	Only users listed in this file are allowed to use at.
+/etc/cron.deny	Exists and empty	Nobody is denied access to cron.
+/etc/cron.deny	Exists and usernames present	Listed users are denied access to cron.
+/etc/cron.allow	Exists	Only users listed in this file are allowed to use cron.
+
+
+
+**in Linux the system service is called deamon
+Linux servers naming conventions-> httpd, smbd, sshd, dhcpd
+Linux service naming convention-> acpid, atd, crond
+
+systemctl cmd
+
+systemctl mask crond
+
+Correct
+
+To disable a service from running at start we'd use systemctl disable. However, to disable it from even running manually we need to mask it with systemctl mask.
+
+
+
+
+
+
+
+
+
+_______________________________________________
+Shell Scripting:
+
+to create a bash file extension is .sh
+to run bash file use : bash f.sh  , we have to use bash bcz files by default doesn't have permissions to execute but we can gie with chmod
+then we can run bash file with ./f.sh  (./ mandatory)
+
+
+comments -> # this is a comment 
+
+
+shebangs:
+A shebang is the first line in a script file that specifies the interpreter to be used to execute the script. It starts with #! followed by the path to the interpreter.
+#!/bin/bash for Bash scripts.
+#!/usr/bin/python3 for Python scripts.
+#!/usr/bin/env node for Node.js scripts.
+
+Variable creation in shell:
+FIRST_NAME=BOB  # if we give a space after = in bob it will give an error
+to use variables with echo cmd use variable with $($FIRST_NAME)
+-> for a single word variable we didn't need "", but if there are multiple words in the variable then we have to use "", if not it will not give error but only print the first word 
+
+Passing Parameters:
+
+${0}-> the name of the script, the path included 
+${1} -> first parameter 
+|
+|
+|
+|
+|
+${255}-> final parameter 
+** for normal parameters like (name) we can also use it without {}  ($1), if passing a cmd use $(pwd)
+
+
+parameter passing:
+echo BOB ${1}
+while running in terminal -> bash para.sh <the parameter to pass> #eg-> builder
+
+
+if-then-fi:
+conditions:
+-eq => if equal
+-ne => if not equal
+-lt => if less than
+-gt => if greater than
+-z => checks for empty string
+
+color=$1
+if [ $color = "blue" ]
+then
+        echo "the color is blue"
+else
+        echo "Colot is not blue"
+fi
+
+
+u=$2
+c=50
+
+if [ $u -lt $c ]
+then
+        echo "you are too low"
+elif [ $u -gt $c ]
+then
+        echo "You are high"
+else
+        echo "You are equal"
+fi
+
+**note-> spaces are very important in it
+fi-> used to terminate or close if block
+
+
+
+while loop:
+cnt=0
+
+while [ $cnt -lt 10 ]
+do
+        echo "conunt = $cnt"
+        ((cnt++))  # double bracket important
+done
+
+echo "looop done"
+
+
+
+for loop:
+name=$@ # $@ creates an array and takes user input for the same
+
+for n in $name
+
+do
+        echo "Hello $n"
+
+done
+echo "Loop finished"
+exit 0
+
+
+break and continue:
+name=$@ # $@ creates an array and takes user input for the same
+
+for n in $name
+do
+
+if [ $n = some ]
+then
+        break  #or continue
+fi
+echo "Hello $n"
+done
+echo "Loop finished"
+exit 0
+
+
+
+Functions:
+There are two ways of creating a function 
+1) with keyword function :
+2) without function keyword
+
+function Hello(){                                                                               local lname=$1 #taking parameter    
+        echo "hello $lname"
+
+}
+
+
+
+        Goodbye(){
+        echo "Goodbye $1"
+}                                           
+
+Hello bob # passing paramtere               
+Goodbye akash # don't need paranthesis in linux to call functioni
+
+
+
+# function declareation must be above the function call else it will give error
+
+
+piping:
+file=`ls -1 | sort -r | head -3`  # Fixed command substitution
+cnt=1
+for f in $file
+do
+    echo "File $cnt = $f"
+    ((cnt ++))              # Fixed counter increment
+done
+exit 0
+
+
+Reading files:
+cnt=1
+
+while IFS='' read -r LINE
+do
+        echo "Lie $cnt: $LINE"
+        ((cnt++))
+done <"$1"  #$1 for passing the containing content to read while writing cmd eg-> bash readop.sh read.sh
+
+exit 0
+
+IFs-> internal field separator
+
+
+writing to file:
+bash readop.sh read.sh > writing.sh # adding new content or overriding the present one
+bash readop.sh read.sh >> writing.sh # appending new content
+
+
+File checksum:
+cksum filename.txt
+output is the checksum value, size of file in bytes name of file
+
+checksum changed on every update to the file 
+and if we undo the update then previous checksum get restored 
+
+
+Sleep and process:
+delay=$1
+
+if [ -z $delay ]
+then
+        echo "empty delay"
+        exit 1
+fi
+
+echo "Going to sleep for $delay seconds"
+sleep $delay
+echo "Awaken now"
+exit 0
+
+if we try to execute other cmds then they will execute after the system awaken
+
+
+watching process:
+status=0
+
+if [ -z $1 ]
+then
+        echo "Please suplly thye pid"
+        exit 1
+fi
+echo "watching Process with pid $status"
+while [ $status -eq 0 ]
+do
+        ps $1 > /dev/null
+        status=$?
+done
+
+echo "Process $1 has terminated"
+exit 0
+
+
+it will tell you if any process get terminated by default or if you terminated it
+
+
+getting input from the user:
+read -p "What is your name: " Name
+echo "Your name is $Name"
+
+
+Handling bad data:
+valid=0
+
+while [ $valid -eq 0 ]
+do
+        read -p "please enter you name and age:"  name age
+
+        if [[ ( -z $name ) || ( -z $age ) ]]        then
+                echo "Not enough parameters passed"
+                continue
+        elif [[ ! $name =~ ^[A-Za-z]+$ ]]
+        then
+                echo "Non alpha characters detected [$name]"
+                continue
+        elif [[ ! $age =~ ^[0-9]+$ ]]
+        then
+                echo "Non digit characters detedcted [$age]"
+
+        continue
+
+        fi
+        valid=1
+done
+echo "Name = $n
+

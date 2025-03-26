@@ -1,0 +1,17 @@
+     List<Integer> list=new ArrayList<>();
+       List<String> list1=new ArrayList<>();
+       list1.add("aryan");
+       list1.add("varyan");
+       list1.add("anuj");
+       list1.add("tanuj");
+       list.add(1);
+       list.add(4);
+       list.add(-1);
+       list.add(0);
+       list1.sort(null);
+
+       it works with list1 and list2
+       but if we have a list of objects it does not works
+
+       Coaparator works when we have to write our logic or we have to sort along multiple fields 
+       comparable use to sort with natural ordering 

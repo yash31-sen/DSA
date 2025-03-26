@@ -1,0 +1,11 @@
+iterator is used to traverse over the collections one by one
+
+Iterator<Integer> itr = numbers.iterator();
+while(itr.hasNext()){
+
+}
+
+ListIterator<Integer> listItr=numbers.listIterator();
+while(listIterator.hasNext()){
+
+}

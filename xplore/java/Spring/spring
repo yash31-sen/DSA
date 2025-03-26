@@ -1,0 +1,208 @@
+spring:=>>  fetatures=> pojo, dependency injection, mvc,rest security, batch, data,aop etc
+it can integrate with other frameworks as well (hibernate etc)
+no jar file needed, no much configuration needed in spring boot  and this is the disadvantage of spring
+
+Sprint Boot:(open source, used to create microservices ,
+Combination of spring framework and embeded server
+
+
+The main goal of Spring Boot is to reduce development, unit test, and integration test time
+no xml configuration needed
+=> built on top of spring framework
+
+=> follows layerd architecture
+
+)
+no configuration needed, or very less
+provide and embedded server we create jar files inside which we have tomcat, that means we can run on any jvm without the need of any server
+
+Spring boot auto configuration =-> does configuration for us 
+not generate any xml file, but if we want to do any configuration then we an make use of applilcation.properties file
+
+__________
+Dependecny injection:
+
+dependency injection containers:responsible for creaating a object for us and then they will inject it on our class( we dont have  to create a object with new keyword, it is harcoding), 
+=>defualt ide for spring is sts.
+
+=> A plain old Java object (POJO) is a class definition that is not tied to any Java framework so any Java program can use it. No such naming conventions (have just like class) or it is alson an class
+Spring AutoWrite and Dependency injection in spring boot:
+
+if we create a class in spring then we don't have to create a  object of in main class with new keyword (it is hard coding ), spring provide object of that class with:
+
+ConfigurableApplicationContext context=SprintApplication.run(Main.class,args);///define in main class, as we  run this line container  get spring created   and  in it we have to specify which classes  object does we  need  (like if we  have 15 classes and we need objects of  only 6 clasess then we have to specify )
+
+/// if we need  the object of perticular class just write @Component above the class name
+Alien a=context.getBean(Alien.class); //alien is a class whose object we  need
+a.show();
+
+
+inside jvm -> spring container[ it has diffrent objects (called as spring bean)]
+
+
+there are 2 scopes of spriong beans ->singolton scope and prototype scope..(others also request, session etc)
+
+by default spring framework uses the concept of singolton design pattern 
+the moment we start the applicaiton it will give us the object
+also we are trying to create a object more than ones it will create it ones only
+
+=>if we want to create more objects then do this:
+in a created class with @Component mention @Scope(value="prototype")  //it will not creata a instance by defulat not even 1, the moment we ask the object it create it, more than 1 also it creates
+
+Autowired:
+
+if we create 2 classes A and B and call the object of B in A and then woth A's object calling B's method in A's class then it will not work because spring is not able to find the object of B's class in spring container(evenn if already created with @Component) to make it work we use @Autowired,
+
+define it in A above the object of B,
+by default autowired search for the types
+if we have to search by name then we can use @Qualifier("name") with @Autowired
+
+we can change the name of sping bean also by this:
+@Component("newName"); // let's say in B
+
+
+if we make a pring project we need to have controller, controller is nothing but a java class with annotaion @Controller and import 0r.springframework.sterotype.Controller
+
+in this controller we create different different functions to go to perticular route, for letting the function know to go ot which route 
+above function write @RequestMapping("route-name");
+
+=>spring boot by default does not support jsp we have to add dependency named tomcap-jasper in pom.xml file 
+
+
+=>if we want to do any configuration in spring boot then we have one file named application.properties
+
+eg=> suffix and prefix:
+the path  of the page is defined as prefix and the extension of the page id ==s defined as suffix 
+spring.mvc.view.prefix=/pages/
+spring.mvc.view.suffix=/.jsp/
+
+
+=> if we want to send any data to server we can user HttpResponse object 
+(it is on use if we want to use it or not in spring but in servlet it is compulsary to use both the object event if we dont need them
+
+
+we can also send and recieve data without req and res objects also in spring boot
+
+just say String name, HttpSession sessoin
+session.setAttribute("name",name);
+the thing here it that it will match the name filed of html and String name is class and then assign it and print 
+in this case if we different names in both the places it will not work
+
+to make it work with different names we need to use an annotation called as @RequestParam("name") String name 
+
+
+we can also use ModelAndView in place of sesion to transfer the data (recommednded)
+ModelAndView md= new ModelAndView();
+mv.addObject("name",myName);// we can also pass the whole object of perticular class here and then access data in jsp as obj.properties 
+mv.setViewName("home");
+return mv;  //no need to return the page 
+
+
+to use database and let spring know which db we using, go to application.porperties and type: 
+spring.h2.console.enabled=true;
+spring.datasource.platform=h2
+spring.datasource.url=jdb:h2:mem:name
+h2 a database name
+
+
+to access the database in the browser just go to browser and type:
+localhost:8080/h2-console
+
+
+=> to add table 
+
+in the class where we want to add table use annotation on top of class :
+@Entity
+ans inside class 
+@Id
+
+with it, it will create a table with attributes in the class as columns 
+
+
+to perform crud opearion on database we have to create an interface  Interfacename extending CrudRepositroy<Classname, PrimmaryKeyType>;
+then in controller 
+write:
+@Autoeired
+Interfacename intn;
+and in mapping function :
+int.save();
+
+
+to getdata by id
+int.finById(aid).orElse(null/new obj());
+then send data with modelandview to jsp
+
+to create a method in inerface the naming convention should be like:
+start with find in middlw "by" and at te end property name 
+like if porpery name is tech 
+then findByTech()
+findByTech1()//will not work;
+
+findByAgeGreaterThan(102)// works
+     
+
+if we have to create a method that by default it does not accept then use it like that:
+@Query("from Alien where tech=? order by ")//in jpa
+List<Alien> findByTechSorted(String tech);
+
+
+
+to send a request qith query:
+server can provide data in different formats, but if client want nay perticular type let say json so the server will send the json
+here the data will be same just the format changes 
+
+Conent negotiation is the process is which the client req server to send data in any perticular format but server refuses the request  and if client req to send json or other type server sends it 
+
+
+RequestMapping(path="/aliens", produces={"application/xml});   // now thid mapping will not produce any thing other than json
+When a server is send data to client it is produce because the server is producing the data
+
+When a server is accepting data from client then it is Consume
+@PostMapping(path="alien", consumes={"application/json});; now  it will not accept data type other than json
+
+
+
+=>Controller vs RestController:
+
+Controller:
+
+Used for handling web requests in MVC (Model-View-Controller) applications.
+
+Typically returns views (like JSP, Thymeleaf, or HTML templates).
+
+Methods inside @Controller classes return strings referring to view names.
+
+Requires @ResponseBody if you want to return JSON or XML instead of a view.
+
+
+RestController:
+Specialization of @Controller that automatically applies @ResponseBody to all methods.
+
+Used in RESTful APIs to return data (JSON, XML) instead of views.
+
+Simplifies API development since @ResponseBody is not needed explicitly.
+
+
+=>When we have to send a data fom body as raw:
+@PostMapping("/alien)
+
+public Alien addAlien(@RequestBody Alien alien){} // we have to use @RequestBody
+
+
+
+repo.getOne(id);//return the object 
+@RequestMapping is not specifically a GET request. It is a generic mapping annotation that can handle multiple HTTP request types like GET, POST, PUT, DELETE, etc..
+
+
+
+Spring Data Rest:
+in controller we are giving the request and based on requst controller is performing the opeartions 
+but with spring data rest we can process the request but without controller
+
+for this we have to use @RepositoryRestResource(collectionResourceUrl="aliens", path="aliens") in an interface
+
+=>JPA Repository (JpaRepository) is used to interact with databases in Spring Data JPA, providing built-in CRUD operations but requiring a separate @RestController for API exposure.
+
+REST Repository (@RepositoryRestResource) automatically exposes JPA repositories as REST APIs without needing a controller, offering endpoints like GET, POST, and DELETE out of the box.
+
+Use JpaRepository when you need custom business logic and control over API responses, while @RepositoryRestResource is best for quick CRUD APIs with minimal setup. 

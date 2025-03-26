@@ -1,0 +1,28 @@
+Regression: statical process of extimating the relationship among variables
+linear regression -> y=mx+c
+logistic regresson-> y=1\[1+e^-(mx+b)]
+
+When to use Logistic regression:
+*target variable is binary *transparency is important 
+* fairly well-behaved data
+
+When to no use:
+*continuos trget variable
+*massive data(rows or columns)
+unwidely data
+performance is the  only thing that matters 
+
+import logistic regression:
+from sklearn.linear_model import LogisticRegression
+LogisticRegression() # on runnig this we got many things inside the function LogisticRegression(-,-,-,-,-)these all are called as logistic regression
+
+C hyperparameter -> a regularization parameter in logistic regression, controls how closely the model fits to the training data
+
+C=1/lambda, lambda=0 -> low reg, high complexity, more likely to overfitt
+
+to tune there hyperparameter we use gridsearch (also used for cross validation, Systematic search, performance matrix )
+
+grid search has methods like fit etc
+
+**How many individual Logistic Regression models were fit using GridSearchCV?->35
+

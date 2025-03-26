@@ -1,0 +1,18 @@
+like an arraylist it is also an implementational class of list, 
+syntax:
+LinkedList<Integer> llist=new LinkedList<>();
+it is doubly linked list 
+
+List<Integer> llist=new LinkedList<>(); //we can also create it like that but with it we won't be able to access all the methods of linked list, we can only access methods of list 
+
+
+llist.add();
+llist.get();
+llist.addLast();
+llist.addFirst();
+llist.getFirst();
+llist.getLast();
+llist.removeAll(passotherlist);
+llist.removeIf(x->x%2==0);
+
+it can behave like an an vector,list as well it is very powerfull class, arraylist as well with some opearations

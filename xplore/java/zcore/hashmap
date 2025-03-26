@@ -1,0 +1,35 @@
+import java.util.HashMap;
+1)Hashmaps are unordered 
+2)Syntax-> HashMap<String,Integer> hs=new HashMap()<>;
+3)map.put(key,value);, map.get(key);
+4)Search in map=> map.containsKey(key);
+5) to get the value of that key=> map.get(key);//if exist then value else give null
+6)iterate over the hasmap => 
+for(String key:map.keySet()){
+    System.out.println(key+" "+map.get(key));
+}
+__________________
+map.forEach((k,v)->System.out.println(k+" "+v));
+-----------------------------------------
+for(Map.Entry<String,Integer>e:map.entrySet()){
+sout(e.getKey()+" "+e.getValue());
+}
+
+7)remove value from map=> map.remove(key);
+8) to cehck duplicates in array:=> map.put(s,map.get(s)+1);
+9)map.isEmpty(), map.size();, map.clear();, map.replace(key,oldVal,newval) || replace(K key, V newValue), 
+
+
+
+import java.util.*;
+
+HashMap<Integer, String> map = new HashMap<>();
+map.put(1, "Banana");
+map.put(2, "Apple");
+map.put(3, "Cherry");
+
+// Convert entry set to list and sort by values
+List<Map.Entry<Integer, String>> list = new ArrayList<>(map.entrySet());
+list.sort(Map.Entry.comparingByValue());
+
+System.out.println(list); // Output: [2=Apple, 1=Banana, 3=Cherry] (Sorted by value)

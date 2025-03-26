@@ -1,0 +1,73 @@
+Collections:
+it is a framework in java
+can only contains objects 
+int, double = class representation(Integer, Double)
+-> provide ready made structures like ArrayList and algorithms like sorting searching etc
+provide apis uses 
+-> can store multiple type of data in the same collection 
+-> dynamic size
+-> Collection framework consist of 3 phases:
+1) Interfaces:
+Core collection interfaces are the foundation of java collections 
+syntax:-> public interface Collection<E>
+E-> collection is generic
+Examples of collections:
+1)Set-> can't contain duplicate elements 
+2)List-> ordered collection 
+	contains duplicates 
+3)Queue-> 
+4)Map-> do not contain duplicates
+5)Sorted map-> maintains its mapping in ascending key order 
+
+Operations on Collections:
+1)containsAll-> returns true if the target collection contains all the elements in the specified collection
+2)addAll-> add all the elements in the specified collection
+3)removeAll-> removes from the target collection all its elements that are contained in the specified 	collection 
+4)retainALl-> it retains only those elements in the target collection that are also contained in the specified collection and remove rest all
+5)clear-> remove all elements from the collections 
+
+Collection Interface Array Operations:
+toArray() -> collections to array
+
+
+
+______________________________________________________________
+
+like we use , in normal language we use _ in java to define numbers 
+eg: int price=2_000; //equivalent to 2,000
+** create constant variable in java using final keyword
+final int a=1;
+*
+// Implicit casting
+ byte > short > int > long > float > double
+implicit conversion can't convert values of different type than number to other type so use wrapper class
+eg: int y=int(1.1)+2;
+Interparent("1");//Integer is wrapper class
+
+
+***
+
+Formatting in java
+NumberFormat class // can't create an instance of this class because it is abstract 
+eg:
+NumberFormat cur=NumberFormat.getPercentInstance();
+String res=cur.format(1234567.891);
+sout(res);// -> $1,234,567.89
+
+
+-----------------------
+Interfaces:
+**In java it is possible for abstract class to contain methods those are non abastract in  nature.(but must have atleast one abstract method)
+But it is not possible for interfaces to have non abstract methods in it.
+**can't create object of interfaces but can create refferences 
+**to inherit inheritance extends keyword didn't uses we use implements
+** if a interface have 2 methods and we implement that interface in some class then we neccesarily have to create and use those methods in the class we implemented interface 
+**when we implement the methods of interface we have to make them public 
+**we can't modiy properties in interfaces as they are final 
+for example f we create a variable as =4; and want to modify by implimeting the interface and creating the object of that class, so we won't be able to perform it 
+**we can create muultiple interfaces in a single program, but we can't use multiple abstract classes in a single program 
+
+
+Why no multiple inheritance in java?
+because of inheritance ambiguity.
+*** but it can be used with the help of interface

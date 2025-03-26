@@ -1,0 +1,35 @@
+String methods:
+1)reverse(s)
+2)s.replace(iten,target);
+3)s.trim(); // removes leading and tralling white spaces 
+4)s.charAt(i);
+5)s.compareTo(s1)// return the difference of ascai values 
+5)s.compareToIgnoreCase(s1)// return the difference of ascai values 
+6)s.contains()
+7)s.startsWith("an")
+8)s.isEmpty();//returns true for "", returns false for " "
+9)s.isBlank(); // returns true for "" and also " "
+10)s.indexOf()// also specify from where to look as 2nd parameter as index and from where till look as 3rd index parameter
+10)s.lastIndexOf()
+
+s.substring and s.subsequence are same  in java
+
+
+________________________________________________________________________________________
+Java Strin array:
+
+
+String[] words = {"Java", "is", "awesome"};
+String result = String.join(" ", words);
+
+Arrays.asList(arr).contains("Banana")
+
+
+________________________________________________________________________________________
+StringBuilder:
+StringBuilder sb=new StringBuilder("Tony")
+sb.charAt(index)
+sb.setCharAt(index,val);
+sb.insert(index,'val')
+sb.delete(fromIndex, toIndex); toIndex exclusive
+sb.append("val);

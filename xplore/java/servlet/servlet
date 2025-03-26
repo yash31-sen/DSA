@@ -1,0 +1,98 @@
+1)in web.xml file we have 2 tags  servlet tag and servlet mapping tag
+=> in servelt tag: mention the class name(com.package.classname) , and servlet name (mustbe same in servletand servlet mapping)
+=> servlet mappiung tag: mention url pattern
+=>webcontent => webinf=> web.xml
+
+=> servlet is nothing but a normal class that extends HTTPServelet
+
+=> servlet takes the requet proces the information and sends back the response (we can send the response in any formate [ht,mlhtml,json,])
+
+=> in servlet 3.0 we got new feature called annotation, which allow us to use servlet without using the web.xml file
+
+=> client  ---[req]--> server ---[req]---->web container(tomcat,apache etc) ======[uses a file web.xml to detect which servlet to call ]-----[calling the servlet]--->servlet(process the information and then sends the response to client machine)
+
+=>all public pages ihn webcontent folder
+
+=>in servlet request and response objects are alreadyt created we just have tro access them (no new keyword needed)
+=>req.getParamter() will return string
+
+=> response.getWritter() may throw ioexcepion
+
+=>Reqest Dispatcher:
+calling servlet from servlet
+url does not changes
+it will perfectly work on the pages in same website
+
+
+req.setAttribute("key",value); will set attribute and we can get this attrinute in other servlet using req.getAttribute();
+
+
+=>sendRedirect method:
+used to send data to some other url 
+changes the url 
+we can not transfer the data with request object like we do in request dispatcher , if we try to do that we got an err (may be null ptr exception)
+if we want to do that we have to use the concept of sessions
+
+res.sendRedirect("servletname")
+
+passing values from one servlet to other servlet using sendRedirect();
+res.sendRedirect("servletName?k="+k);//or directly in the url
+and then req.getAttribute();
+
+other way is by using httpsession interface
+=>HttpSession session=req.getSession();
+session.setAttribute("key",value);
+
+session.getAttribute("key")=>returns object
+session.removeAttribute("key");
+
+one more way of doing it is by using cookies(belongs to javax.servlet.http):
+=>Cookie cookie=new Cookie("key",value+""); //value must be a string
+
+res.addCookie(cookie);
+
+note=> while accepting the cookies or while recieving it, it gives all the cookies so we have to take only those that we need 
+
+Cokkie cookies[]=req.getCookies();
+
+_______
+=>Servlet Config and Servlet Context:
+used to get the initial values for the servlet or for the application
+both are interfaces
+
+
+we create these values in web.xml file as 
+
+<context-param>
+<param-name>name</param-name>
+<param-value>someone</param-value>
+</context-param>
+
+
+fetch these values in servlet:
+ServletContext ctx=getServletContext();//or 
+ServletContext ctx=req.getServletContext();
+
+ctx.getInitParameter("name");
+
+=> the diffrence between servlet config and context is that the servlet context is shared among all the serlvets in an application
+
+in servlet config , in web.xml file the fileds to fetch is created inside the targeted servlet tag as:
+<init-param>
+<param-name>name</param-name>
+<param-name>someone1</param-name>
+</init-param>
+
+
+fetch the data:
+ServletConfig cfg=getServletConfig();//or 
+ServletConfig cfg=req.getServletConfig();
+
+
+____________
+=> servlet annotation connfiguration:
+till now we are managing routes and other things related to routes with the help of web.xml file, but we can also use annotations 
+
+syntax:
+just on top of servlet use
+@webservlet("/url");

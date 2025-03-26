@@ -1,0 +1,99 @@
+Java Server Page
+
+<%>  <%> => data inside the serrive method  
+<%!> <%> => data outside the service method // decleration tag
+<$@page> import java.util.*; <%> will go to import section of the java class (if multiple packages the seperate them by comma(,)) itis directive tag
+
+<%=> <%>// in out.println directly
+
+Tags:
+1)Scriplet Tag[<%----%>]: code part of service method, can have multiple scriplet tags
+2)Decleration Tag[<%!----%>]: code outside the service tag
+3)Directive  Tag[<%@page-----%>]: if we want to import a package and use some external tag 
+Note: import like that:-> <%@page import ="java.util.*"%>
+4)Expression Tag[<%=-----------%>]: used to directly acess variables, everything inside this tag becomes the part of out.println() in servlet 
+
+
+________________
+JSP directives: [@page, @include, @taglib]
+if we want ot specify something for entire page we do it in directive tag eg: import tag, mention the page handles the excetion or not 
+
+@page:
+syntax:->           <%@page attribute="value" attribute="value" ...%>
+language="Scripting language",
+extends="classname",
+import="importlist",
+session="true/false",
+autoFlush="true/false",
+contentType="ctinfo",
+errorPage="err_url",
+isErrorPage="true/false",
+info="inoration",
+isElIgnored, isThreadSafe
+
+
+@include: if we already have jsp page and want to include that in current jsp page use this tag
+syntax: <% include file="filename" %>
+
+@taglib: html has limited tags and if we want to use external tags then this tag is used
+
+syntax: <@taglib uri="uri" prefix="fx" %>
+
+=> builtin objects can be used in scriplet and Expression tags 
+
+implicit objects in JSP:
+req, res, PageContext (pageContext), out(JSpWriter) -pagewriter object, session (HttpSession), Application (SErvletContext), Config (HttpConfig)
+
+
+to make attribute available to current page ise pageContext
+we can make pagecontext available to session as well as:
+pageContext.setAttribute("name", "somone");//current page only
+pageContext.setAttribute("name", "somone",PageContext.SESSOIN_SCOPE);//sessopm scope only
+
+
+Exception handling in jsp:
+same as java exception use in scriplet tag
+to set a page to error page we have to declare in a page like that:
+<%@ page isErrorPage%>
+and this on page where the exception may occure:
+<@page errorPage="errorPage.jsp"%>
+
+
+JDBC in JSP:
+
+
+
+
+
+JSTL(JSP Standard Tag Liberary):
+
+
+
+
+
+
+
+
+
+
+
+Servlet Filter:
+Filters does not know other filters are working and which which filter data is comming from
+-> if we have multiple filters and want to check for them we have to chain them and this is called fiulter chaining 
+
+for whoch request to call which is filter is configured in web.xml file
+
+methods of filters: 1)init(), 2)dofilter(ServletReq,ServletRes, filterChain), 3) //not httpservletrequest so need to typecast it
+destroy()
+
+to configure filter we use filter config
+
+filteres are plugable
+one filter is not dependent on otehr filter unlinke servlet where we have to mention that whoch next filter we have to call
+
+
+Comments in JSP:
+3 types:
+1)HTML comments (sent to client)  [<!-->]
+2)JSP comments (does not sent to client)  [<%--   --%>]
+3)Java comments (single line and multiline, does not sent top client) [// , /**/]

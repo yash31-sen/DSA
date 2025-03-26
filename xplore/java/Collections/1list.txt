@@ -1,0 +1,89 @@
+list is interface and is a part of java.utilpackage
+use when we need ordered collection like when we need items in the order they are comming and duplicated allowed
+index based access
+
+list.add(2,50); at 2nd index 50 got added and element at index 2 or after get shofted to one position 
+list.set(2,50);// at 2nd index 50 got replaced with the value already present at index 2
+by default the capacity of arraylist is 10, capacity not size
+
+if the internal arrya of arraylist get full then it needs a resize
+capacity grows by 1.5 and size by 1
+
+if we have estimate of how much teh size arraylist can grow (approx) then we can give the intial capacity to it as
+
+ArrayList<Integer> arr=new ArrayLIst<>(1000);
+1000 is initial capacity not the size, arr.size(); will give 0 now also
+
+syntax:
+
+=>List<String> list=new ArrayList<>();
+
+=>List<String> list1=Arrays.asList("Monday","Tuesday");// it is fixed sized list can't add elemtns to add with .add() method can replce elemnts with .set() method
+but we can make it to allow it to add values by doing so:
+List<String> list2=new ArrayLIst<>(list1)//copy one list to other 
+now perform opeartion on list2
+
+=> String[] arr={"a","b","c","d"};
+List<String> list2=Arrays.asList(arr);//array converted to list
+=>List<Integer> list3=List.of(1,2,3,4);// in this we won't be able to replace the elements as well
+
+ArrayList<String> list1=Arrays.asList("Monday","Tuesday");//does not work
+
+=> List<String> list1=Arrays.asList("Monday","Tuesday");
+List<String> list2=new ArrayList<>(list1);
+	list2.addAll(Arrays.asList("B","c"));
+
+=> ArrayLIst is child class of list 
+
+
+
+=> list.remove(index/value)
+
+
+
+=>sorting:
+
+list.sort(null); //here null is comparator
+Collections.sort(list);
+Collection.reverse(list);
+
+
+
+________________________________________________________________________________________
+Comparator:
+it is an interface;
+
+with the help of it we can do custom ordering 
+
+copares two objects of same type;
+
+eg:
+list.sort(null);  // here we assign a null to compartor so it sort it in ascending order 
+eg: sort the given strign based on the length of words in descending order:
+
+
+list.sort((a,b)->b.length()-a.length());
+
+=> it may not work woth objects so to do it for objects do it like that:
+
+list.sort((o1,o2)->{
+    if(o2.getMarks()-o1.getMarks()>0){
+        return 1;
+    }
+    else if(o2.getMarks()-o1.getMarks()<0){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+})
+
+=> other way for the same:
+Comparator<ClassName> comp=Comparator.coparing(ClassName::getMarks).reversed();
+list.sort(comp);
+
+
+eg: sort the given list with marks of students and also with their name
+
+Comparator<ClassName> comp=Comparator.coparing(ClassName::getMarks).reversed().thenComparing(Student::getName);
+list.sort(comp);

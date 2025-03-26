@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java PRA MCQ Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .question {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .options button:hover {
+            background-color: #0056b3;
+        }
+        .correct {
+            background-color: green !important;
+        }
+        .wrong {
+            background-color: red !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Java PRA Exam MCQ Quiz</h2>
+        <div id="quiz-container">
+            <!-- Questions will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the default value of a local variable in Java?",
+                options: ["null", "0", "Depends on the data type", "Not initialized (Compilation Error)"],
+                correct: 3
+            },
+            {
+                question: "Which keyword is used to define a constant variable in Java?",
+                options: ["constant", "final", "const", "var"],
+                correct: 1
+            },
+            {
+                question: "Which of the following is a wrapper class in Java?",
+                options: ["int", "Integer", "double", "char"],
+                correct: 1
+            },
+            {
+                question: "What will be the output of System.out.println(10 + 20 + 'Java' + 30 + 40);?",
+                options: ["30Java30", "Java60", "30Java3040", "10302030"],
+                correct: 2
+            },
+            {
+                question: "Which of these is a superclass of all Java classes?",
+                options: ["Object", "Class", "Super", "Base"],
+                correct: 0
+            },
+            {
+                question: "What will Math.round(4.5) return?",
+                options: ["4", "5", "4.5", "Compilation Error"],
+                correct: 1
+            },
+            {
+                question: "Which package is automatically imported in Java?",
+                options: ["java.util", "java.lang", "java.io", "None"],
+                correct: 1
+            },
+            {
+                question: "What is the output of the following code? \n int a = 5; System.out.println(a++ + ++a);",
+                options: ["10", "12", "11", "13"],
+                correct: 2
+            },
+            {
+                question: "What is the size of an int in Java?",
+                options: ["2 bytes", "4 bytes", "8 bytes", "Depends on OS"],
+                correct: 1
+            },
+            {
+                question: "Which of these methods belongs to the String class?",
+                options: ["parseInt()", "toUpperCase()", "append()", "charAt()"],
+                correct: 3
+            },
+            {
+                question: "What will be the output of the following program?\n System.out.println(10/0);",
+                options: ["0", "10", "Runtime Error", "Infinity"],
+                correct: 2
+            },
+            {
+                question: "What does JVM stand for?",
+                options: ["Java Virtual Memory", "Java Virtual Machine", "Java Variable Manager", "Java Vendor Machine"],
+                correct: 1
+            }
+        ];
+
+        function loadQuiz() {
+            const quizContainer = document.getElementById("quiz-container");
+            quizContainer.innerHTML = "";
+
+            questions.forEach((q, index) => {
+                let questionBlock = document.createElement("div");
+                questionBlock.classList.add("question");
+                questionBlock.innerHTML = `<p><b>Q${index + 1}:</b> ${q.question}</p>`;
+
+                let optionsBlock = document.createElement("div");
+                optionsBlock.classList.add("options");
+
+                q.options.forEach((option, i) => {
+                    let btn = document.createElement("button");
+                    btn.innerText = option;
+                    btn.onclick = function() {
+                        if (i === q.correct) {
+                            btn.classList.add("correct");
+                        } else {
+                            btn.classList.add("wrong");
+                        }
+                    };
+                    optionsBlock.appendChild(btn);
+                });
+
+                questionBlock.appendChild(optionsBlock);
+                quizContainer.appendChild(questionBlock);
+            });
+        }
+
+        loadQuiz();
+    </script>
+
+</body>
+</html>

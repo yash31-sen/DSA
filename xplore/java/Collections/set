@@ -1,0 +1,22 @@
+does not have duplicates:
+basd on map
+Set-> HashSet, LinkeHashSet, TreeSet, EnumSet
+
+Sset<Integer> st=new HashSet<>();
+
+.add(1);
+set.remove(12); if present return true else false
+it is unordered
+
+
+LinkedHashSet => ordered 
+
+
+
+TreeSEt=> sroted        
+
+Set<Integer> st=Collections.synchronizedSet(set);// do not use it instaeed use 
+
+ConcurrentSkipListSet<Integer>set1=new ConcurrentSkipListSet<>();// implement navigable set
+
+built in thread safety
