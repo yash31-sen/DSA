@@ -1,4 +1,4 @@
-package GCD;
+package Questions.GCD;
 
 public class GCD1 {
     public static void main(String[] args) {

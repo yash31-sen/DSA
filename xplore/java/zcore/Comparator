@@ -1,0 +1,76 @@
+If we have to use ourown logic in sorting we use conparator 
+
+ List<String> list = new ArrayList<>(Arrays.asList("Yash","b", "Sen", "here", "or", "where","a"));
+
+       
+       Comparator<String> com=new Comparator<String>(){
+           public int compare(String i, String j){
+                if(i.length()>j.length()){
+               return 1;
+           }
+           else{
+               return -1;
+           }
+           }
+       };
+       //or
+       Comparator<String> com = (i,j)  -> i.age>j.age?1:-1;
+           Collections.sort(list,com);
+           System.out.println(list);
+
+
+
+
+
+
+        //    -------------------
+
+
+
+        import java.util.*;
+
+class Help implements Comparable<Help>{//1
+    public int i;
+    public int k;
+    public String s;
+    Help(int i, int k, String s){
+        this.i=i;
+        this.k=k;
+        this.s=s;
+    }
+   public int compareTo(Help h){//2
+      if(this.s.length()>h.s.length()){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+   }
+}
+class Main {
+    
+    
+    public static void main(String[] args) {
+        Comparator<Help> com=new Comparator<Help>(){//3
+        public int compare(  Help i, Help j){
+            if(i.s.length()>j.s.length()){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+    };
+        List<Help> list=new ArrayList<>();
+        list.add(new Help(1,2,"yash"));
+        list.add(new Help(1,2,"sen"));
+        list.add(new Help(1,2,"is"));
+        list.add(new Help(1,2,"where"));
+ 
+    Collections.sort(list);
+           for(Help h:list){
+               System.out.println(h.s);
+           }
+          
+    }
+}
